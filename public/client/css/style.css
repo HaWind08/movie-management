@@ -1,0 +1,11 @@
+body {
+    font-family: 'Anton', sans-serif;
+}
+
+.header__middle {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.header__top-search {
+    align-items: center;
+}

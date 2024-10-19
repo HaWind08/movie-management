@@ -1,0 +1,30 @@
+$(document).ready(function(){
+    $(".header__sm-select").click(function(){
+        $(".header__sm-mn2").toggle(500);
+    })
+    $(".header__right").click(function(){
+        $(".header__sm-r").toggle(500);
+    })
+    $(".header__sm-item").click(function(){
+        $(this).find("a").css("color", "var(--button-color-1)");
+    });  
+    $(".btn-login").click(function(){
+        $(".modals_log-in").toggle();
+    })
+    $(".header__middle-info-close").find("i").click(function(){
+        $(".modals_register").hide();
+        $(".modals_log-in").hide();
+    })
+    $(".modal__overlay").click(function(){
+        $(".modals_register").hide();
+        $(".modals_log-in").hide();
+    })
+    $(".login__middle-form-btn").click(function(){
+        $(".modals_register").toggle();
+        $(".modals_log-in").toggle();
+    })
+    $(".register__middle-form-btn").click(function(){
+        $(".modals_register").toggle();
+        $(".modals_log-in").toggle();
+    })
+});

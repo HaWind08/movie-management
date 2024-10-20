@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const methodOverride = require('method-override');
-const flash = require("express-flash");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const flash = require("express-flash");
 require("dotenv").config();
 
 const app = express();

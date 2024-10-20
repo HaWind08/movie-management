@@ -4,7 +4,8 @@ div(id='header navbar navbar-expand-sm')
             .header__top.d-flex.justify-content-between.align-items-center
                 .header__top-left.navbar-brand
                     .header__logo
-                        img(src="/client/images/header-logo.webp", alt="header__logo", class="header__logo-link")
+                        a(href="/")
+                            img(src="/client/images/header-logo.webp", alt="header__logo", class="header__logo-link")
                 .header__sm-md.d-block.d-md-none.d-xl-none
                     .header__sm-select.d-flex.justify-content-between
                         | Chọn rạp
@@ -42,8 +43,12 @@ div(id='header navbar navbar-expand-sm')
                         input.header__top-search-ip(type="text", placeholder="Tìm phim, rạp ...")
                         i.fa-solid.fa-magnifying-glass
                     .header__top-user.d-flex.align-items-center.btn-login
-                        i.fa-regular.fa-user.fa-2x
-                        .header__top-user-login.d-none.d-xl-flex Đăng nhập
+                        if(user)
+                            i.fa-solid.fa-right-from-bracket(style="font-size: 20px")
+                            a.header__top-user-login.d-none.d-xl-flex(href="/user/logout") Đăng xuất
+                        else 
+                            i.fa-regular.fa-user.fa-2x
+                            a.header__top-user-login.d-none.d-xl-flex(href="/user/login") Đăng nhập
                 .header__top-right-sm.d-none.d-md-flex.d-xl-none
                     i.fa-solid.fa-magnifying-glass
                     i.fa-regular.fa-user.fa-2x.btn-login
@@ -79,57 +84,3 @@ div(id='header navbar navbar-expand-sm')
                         a.header__middle-li.header__middle-button.px-lg-4(href="#") Thuê sự kiện
                         a.header__middle-li.header__middle-button.px-lg-4(href="#") Tất cả các giải trí
                         a.header__middle-li.header__middle-button.px-lg-4(href="#") Giới thiệu
-    #login
-    .modals_log-in
-        .modal
-            .modal__overlay
-            .login__middle-info
-                .header__middle-info-close
-                    i.fa-solid.fa-xmark
-                .header__middle-info-user
-                    img(src="/client/images/img_login.jpg", alt="")
-                    .header__middle-info-email
-                        span.header__middle-info-icon.ti-email
-                        input(type="email", class="header__middle-user-button", placeholder="Email")
-                    .header__middle-info-email
-                        i.header__middle-info-icon.ti-lock
-                        input(type="password", class="header__middle-user-button", placeholder="Mật khẩu")
-                    .login__middle-button ĐĂNG NHẬP
-                    .header__middle-form-infor
-                        a(href="#" class="login__middle-form-btn") Đăng ký ngay
-                        a(href="#" class="login__middle-form-btn2") Quên mật khẩu
-
-    #register
-        .modals_register
-            .modal
-                .modal__overlay
-                .register__middle-info
-                    .header__middle-info-close
-                        i.fa-solid.fa-xmark
-                    .header__middle-info-user
-                        .header__middle-info-email
-                            span.header__middle-info-icon.ti-user
-                            input(type="text", class="header__middle-user-button", placeholder="Họ và tên")
-                        .header__middle-info-email
-                            span.header__middle-info-icon.ti-email
-                            input(type="email", class="header__middle-user-button", placeholder="Email")
-                        .header__middle-info-email
-                            span.header__middle-info-icon.ti-mobile
-                            input(type="text", class="header__middle-user-button", placeholder="Số điện thoại")
-                        .header__middle-info-email
-                            i.header__middle-info-icon.ti-lock
-                            input(type="password", class="header__middle-user-button", placeholder="Mật khẩu")
-                        .header__middle-info-email
-                            i.header__middle-info-icon.ti-lock
-                            input(type="password", class="header__middle-user-button", placeholder="Nhập lại mật khẩu")
-                        .header__middle-info-checkbox
-                            input(type="checkbox")
-                            span.header__middle-info_text
-                                | Bằng việc đăng ký, bạn đồng ý về 
-                                a(href="#") chính sách
-                                |  và 
-                                a(href="#") điều kiện bảo vệ dữ liệu cá nhân 
-                        .register__middle-button ĐĂNG KÝ
-                        .header__middle-form-infor
-                            a(href="#" class="register__middle-form-btn") Bạn đã là thành viên ?
-                            a(href="#" class="register__middle-form-btn") Đăng Nhập

@@ -1,0 +1,49 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main 
+    +alert-error(5000)
+    +alert-success(5000)
+
+    #register
+        .modals_register
+            .modal
+                .modal__overlay
+                .register__middle-info
+                    .header__middle-info-close
+                        i.fa-solid.fa-xmark
+                    form(
+                        action=`/user/register`
+                        method="POST"
+                    )
+                        .header__middle-info-user
+                            .header__middle-info-email
+                                span.header__middle-info-icon.ti-user
+                                input(type="text", class="header__middle-user-button", placeholder="Họ và tên", name="fullName", required)
+                            .header__middle-info-email
+                                span.header__middle-info-icon.ti-email
+                                input(type="email", class="header__middle-user-button", placeholder="Email", name="email", required)
+                            .header__middle-info-email
+                                span.header__middle-info-icon.ti-mobile
+                                input(type="text", class="header__middle-user-button", placeholder="Số điện thoại", name="phone", required)
+                            .header__middle-info-email
+                                i.header__middle-info-icon.ti-lock
+                                input(type="password", class="header__middle-user-button", placeholder="Mật khẩu", name="password", id="password", required)
+                            .header__middle-info-email
+                                i.header__middle-info-icon.ti-lock
+                                input(type="password", class="header__middle-user-button", placeholder="Nhập lại mật khẩu", name="confirmPassword", required)
+                            .header__middle-info-checkbox
+                                input(type="checkbox", id="termsCheckbox")
+                                span.header__middle-info_text
+                                    | Bằng việc đăng ký, bạn đồng ý về 
+                                    a(href="#") chính sách
+                                    |  và 
+                                    a(href="#") điều kiện bảo vệ dữ liệu cá nhân 
+                                div#error-message(style="color: red; display: none;") Vui lòng đồng ý với điều khoản trước khi tiếp tục
+                            div(class="form-group")
+                                button(
+                                    type="submit"
+                                    class="register__middle-button"
+                                ) Đăng ký
+                            .header__middle-form-infor.d-flex.justify-content-end
+                                a(href="/user/login", class="register__middle-form-btn") Đăng Nhập

@@ -179,9 +179,11 @@
     color: var(--button-color-1);
 }
 
-.header__top-user-login {
+a.header__top-user-login {
     font-size: 1.6rem;
     padding: 0 10px;
+    text-decoration: none;
+    color: #fff;
 }
 
 .header__top-flag {

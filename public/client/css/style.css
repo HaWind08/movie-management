@@ -9,3 +9,49 @@ body {
 .header__top-search {
     align-items: center;
 }
+
+/* Alert */
+[show-alert] {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    font-size: 16px;
+    padding-right: 30px;
+    z-index: 9999;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+[show-alert].alert-hidden {
+    animation-name: alert-hidden;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes alert-hidden {
+    from {
+        right: 15px;
+    }
+
+    to {
+        right: -100%;
+        display: none;
+    }
+}
+
+[show-alert] [close-alert] {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+}
+
+/* End Alert */

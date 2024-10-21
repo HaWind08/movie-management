@@ -1,0 +1,24 @@
+extends ../../layouts/auth.pug
+include ../../mixins/alert.pug
+
+block main 
+    +alert-error(5000)
+    +alert-success(5000)
+
+    .bgDefault(style="background: url('/admin/images/bgLogin.jpg'); background-size: cover; height: 100vh;")
+        .container
+            .inner-wrap
+                .inner-logo
+                    img(src="/admin/images/logoLotte.png" alt="")
+                h1.inner-title Đăng Nhập Quản Trị
+                form(
+                    action=`${prefixAdmin}/auth/login`
+                    method="POST"
+                )
+                    .form-group
+                        input(type="Email" placeholder="Email" name="email" required autocomplete="off")
+                    .form-group
+                        input(type="password" placeholder="Mật khẩu" name="password" required)
+                    .form-group
+                        button(type="submit") Đăng nhập
+                    

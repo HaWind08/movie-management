@@ -17,8 +17,10 @@ block main
                 )
                     .form-group
                         input(type="Email" placeholder="Email" name="email" required autocomplete="off")
-                    .form-group
-                        input(type="password" placeholder="Mật khẩu" name="password" required)
+                    .form-group.pass-admin
+                        input(type="password" placeholder="Mật khẩu" name="password" required autocomplete="off" class="input-pass-admin")
+                        i.fa-solid.fa-eye.hidden.eye-loginAdmin
+                        i.fa-solid.fa-eye-slash.eye-slash-loginAdmin
                     .form-group
                         button(type="submit") Đăng nhập
                     

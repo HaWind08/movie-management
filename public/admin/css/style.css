@@ -172,3 +172,25 @@
 }
 
 /* End Login Form */
+
+
+/* Eye pass */
+.bgDefault .pass-admin {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.bgDefault .fa-eye-slash,
+.bgDefault .fa-eye {
+    position: absolute;
+    top: calc(100% / 2 - 3px);
+    right: 15px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* End Eye pass */

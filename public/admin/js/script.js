@@ -13,3 +13,26 @@ if (showAlert) {
     });
 }
 // End Show alert
+
+
+// Eye login
+const eyeOpen = document.querySelector(".eye-loginAdmin");
+const eyeClose = document.querySelector(".eye-slash-loginAdmin");
+const inputPassAdmin = document.querySelector(".input-pass-admin");
+
+if (eyeClose) {
+    eyeClose.addEventListener("click", () => {
+        eyeClose.classList.add("hidden");
+        eyeOpen.classList.remove("hidden");
+        inputPassAdmin.setAttribute("type", "text");
+    });
+}
+
+if (eyeOpen) {
+    eyeOpen.addEventListener("click", () => {
+        eyeClose.classList.remove("hidden");
+        eyeOpen.classList.add("hidden");
+        inputPassAdmin.setAttribute("type", "password");
+    });
+}
+// End Eye login

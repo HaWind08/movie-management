@@ -9,7 +9,6 @@
     /* display: none; */
 }
 
-
 .modal {
     position: fixed;
     top: 0;
@@ -36,7 +35,7 @@
     width: 400px;
     border-radius: 1.8rem;
     text-align: center;
-    margin-top: 148px;
+    margin-top: 132px;
 }
 
 .header__middle-info-close {
@@ -114,7 +113,7 @@
     height: 45px;
     font-size: 1.8rem;
     margin: auto;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: var(--black-color);
     background-color: var(--button-color-1);
     border-radius: 2rem;

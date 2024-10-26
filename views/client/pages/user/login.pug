@@ -23,7 +23,9 @@ block main
                                 input(type="email", class="header__middle-user-button", placeholder="Email", name="email", required)
                             .header__middle-info-email
                                 i.header__middle-info-icon.ti-lock
-                                input(type="password", class="header__middle-user-button", placeholder="Mật khẩu", name="password", required)
+                                input(type="password", class="header__middle-user-button input-login", placeholder="Mật khẩu", name="password", required)
+                                i.fa-solid.fa-eye.hidden.eye-login
+                                i.fa-solid.fa-eye-slash.eye-slash-login
                             div(class="form-group")
                                 button(
                                     type="submit"

@@ -29,11 +29,11 @@ module.exports.registerPost = (req, res, next) => {
         return;
     };
 
-    if (req.body.password != req.body.confirmPassword) {
-        req.flash("error", "Mật khẩu xác nhận không khớp!");
-        res.redirect("back");
-        return;
-    };
+    // if (req.body.password != req.body.confirmPassword) {
+    //     req.flash("error", "Mật khẩu xác nhận không khớp!");
+    //     res.redirect("back");
+    //     return;
+    // };
     
     next();
 };
@@ -76,6 +76,10 @@ module.exports.resetPasswordPost = (req, res, next) => {
         res.redirect("back");
         return;
     };
+
+    console.log(req.body.password);
+    console.log(req.body.confirmPassword);
+    
 
     if (req.body.password != req.body.confirmPassword) {
         req.flash("error", "Mật khẩu xác nhận không khớp!");

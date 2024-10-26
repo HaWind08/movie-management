@@ -188,6 +188,17 @@ module.exports.resetPasswordPost = async (req, res) => {
     const password = req.body.password;
     const tokenUser = req.cookies.tokenUser; //user cần đổi mật khẩu
 
+    console.log("Da chay sang controller");
+    console.log(password);
+    console.log(tokenUser);
+
+    const user = await User.findOne({tokenUser: tokenUser});
+
+    if (user.password === md5(password)) {
+        req.flash("error", "Mật khẩu mới phải khác mật khẩu cũ!");
+        return res.redirect("back");
+    }
+
     await User.updateOne(
         { tokenUser: tokenUser },
         { password: md5(password) }

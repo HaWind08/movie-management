@@ -1,4 +1,4 @@
-:root{
+:root {
     --main-color: rgb(15 23 42);
     --button-color-1: rgb(243 234 40);
     --button-color-2: rgb(102 51 153);
@@ -8,10 +8,12 @@
     --text-color: #333333;
     --boder-color: #dbdbdb;
 }
-*{
+
+* {
     box-sizing: inherit;
 }
-html{
+
+html {
     top: 0;
     scroll-behavior: smooth;
     font-size: 62.5%;
@@ -19,13 +21,15 @@ html{
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
-@media (min-width: 992px) and (max-width: 1199px){
-    html{
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    html {
         font-size: 50%;
     }
 }
-@media (min-width: 768px) and (max-width: 991px){
-    html{
+
+@media (min-width: 768px) and (max-width: 991px) {
+    html {
         font-size: 42%;
     }
 }

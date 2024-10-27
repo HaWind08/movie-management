@@ -9,5 +9,12 @@ header.header
                 div(class="text-right")
                     a(
                         href=`${prefixAdmin}/auth/logout`
-                        class="btn btn-danger btn-sm"
+                        class="btn btn-danger btn-sm button-logout-admin"
                     ) Đăng xuất
+
+form(
+        action=""
+        method="GET"
+        id="form-logout"
+        data-path=`${prefixAdmin}/auth/logout`
+    )

@@ -45,7 +45,7 @@ div(id='header navbar navbar-expand-sm')
                     .header__top-user.d-flex.align-items-center.btn-login
                         if(user)
                             i.fa-solid.fa-right-from-bracket(style="font-size: 20px")
-                            a.header__top-user-login.d-none.d-xl-flex(href="/user/logout") Đăng xuất
+                            a.header__top-user-login.d-none.d-xl-flex.button-logout(href="/user/logout") Đăng xuất
                         else 
                             i.fa-regular.fa-user.fa-2x
                             a.header__top-user-login.d-none.d-xl-flex(href="/user/login") Đăng nhập
@@ -84,3 +84,9 @@ div(id='header navbar navbar-expand-sm')
                         a.header__middle-li.header__middle-button.px-lg-4(href="#") Thuê sự kiện
                         a.header__middle-li.header__middle-button.px-lg-4(href="#") Tất cả các giải trí
                         a.header__middle-li.header__middle-button.px-lg-4(href="#") Giới thiệu
+form(
+        action=""
+        method="POST"
+        id="form-logout"
+        data-path=`/user/logout`
+    )

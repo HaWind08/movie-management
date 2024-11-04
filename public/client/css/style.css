@@ -1,4 +1,5 @@
 @media (min-width: 1400px) {
+
     .container,
     .container-lg,
     .container-md,
@@ -13,6 +14,8 @@ body {
     font-family: 'Anton', sans-serif;
 }
 
+
+/* header */
 .header__middle {
     font-family: "Josefin Sans", sans-serif;
 }
@@ -20,6 +23,21 @@ body {
 .header__top-search {
     align-items: center;
 }
+
+a.header__top-user-login {
+    align-items: center;
+}
+
+a.header__top-user-login i {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+a.header__top-user-login:hover {
+    color: var(--button-color-1);
+}
+/* End header */
+
 
 /* Alert */
 [show-alert] {

@@ -46,9 +46,10 @@ div(id='header navbar navbar-expand-sm')
                         if(user)
                             i.fa-solid.fa-right-from-bracket(style="font-size: 20px")
                             a.header__top-user-login.d-none.d-xl-flex.button-logout(href="/user/logout") Đăng xuất
-                        else 
-                            i.fa-regular.fa-user.fa-2x
-                            a.header__top-user-login.d-none.d-xl-flex(href="/user/login") Đăng nhập
+                        else
+                            a.header__top-user-login.d-none.d-xl-flex(href="/user/login") 
+                                i.fa-regular.fa-user.fa-2x
+                                span Đăng nhập
                 .header__top-right-sm.d-none.d-md-flex.d-xl-none
                     i.fa-solid.fa-magnifying-glass
                     i.fa-regular.fa-user.fa-2x.btn-login
@@ -59,7 +60,7 @@ div(id='header navbar navbar-expand-sm')
             .header__middle.align-items-center.d-none.d-md-flex.justify-content-between
                 .header__middle-left.d-flex
                     .header__middle-theater.header__middle-button.me-4
-                        i.fa-solid.fa-location-dot
+                        i.fa-solid.fa-location-dot.mr-1
                         | Chọn rạp
                         .header__middle-menu
                             .row
@@ -76,7 +77,7 @@ div(id='header navbar navbar-expand-sm')
                                     .header__menu2-item: a(href="#") Cinestar TP.HCM
                                     .header__menu2-item: a(href="#") Cinestar Bình Dương
                     .header__middle-showtimes.header__middle-button.ms-5
-                        i.fa-solid.fa-calendar-days
+                        i.fa-solid.fa-calendar-days.mr-1
                         | Lịch chiếu
                 .header__middle-right
                     .header__middle-right-item.d-flex

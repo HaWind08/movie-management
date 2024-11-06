@@ -1,11 +1,10 @@
 .sider
     .inner-menu 
         ul 
-            li 
+            li.nav-link(class=currentPage === 'dashboard' ? 'active' : '')
+                i.fa-solid.fa-circle-user 
                 a(href=`${prefixAdmin}/dashboard`) Tổng quan
-            li
-                a(href=`${prefixAdmin}/products-category`) Danh mục sản phẩm
-            li
-                a(href=`${prefixAdmin}/products`) Danh sách sản phẩm
-            li
-                a(href=`${prefixAdmin}/accounts`) Danh sách Tài khoản
+            li.nav-link(class=currentPage === 'movies' ? 'active' : '') 
+                i.fa-solid.fa-film
+                a(href=`${prefixAdmin}/movies`) Danh sách phim
+            

@@ -34,9 +34,9 @@
 }
 
 @media (max-width: 991.98px) {
-  .section__title {
-    font-size: 20px;
-  }
+    .section__title {
+        font-size: 20px;
+    }
 }
 
 .section__chose,
@@ -258,7 +258,15 @@
     font-family: 'Anton', sans-serif;
 }
 
+.content__see-btn a {
+    color: var(--button-color-1);
+}
+
 .content__see-btn:hover {
     background: linear-gradient(to right, #ff6e00, #ffc007);
+    color: #ecf2ff;
+}
+
+.content__see-btn:hover a {
     color: #ecf2ff;
 }

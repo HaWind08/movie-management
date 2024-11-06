@@ -6,7 +6,7 @@ const forgotPasswordSchema = new moongoose.Schema(
         otp: String,
         expireAt: {
             type: Date,
-            expires: 300
+            expires: 600
         }
     },
     {

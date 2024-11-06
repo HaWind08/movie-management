@@ -125,7 +125,7 @@ module.exports.forgotPasswordPost = async (req, res) => {
         <br>
         **Mã OTP của bạn: <b style="color: green;"> ${otp} </b>**
         <br>
-        Lưu ý: Mã này chỉ có hiệu lực trong vòng 3 phút và sẽ hết hạn sau thời gian này. Vui lòng không chia sẻ mã OTP này với bất kỳ ai để đảm bảo an toàn cho tài khoản của bạn.
+        Lưu ý: Mã này chỉ có hiệu lực trong vòng 10 phút và sẽ hết hạn sau thời gian này. Vui lòng không chia sẻ mã OTP này với bất kỳ ai để đảm bảo an toàn cho tài khoản của bạn.
         Nếu bạn không yêu cầu mã OTP này, vui lòng bỏ qua email này hoặc liên hệ với chúng tôi ngay lập tức để được hỗ trợ.
         <br>
         Trân trọng, <br>  

@@ -1,0 +1,21 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+
+block main
+    +alert-error(5000)
+    +alert-success(5000)
+
+    h1 Danh sách phim
+
+    .card-mb-3 
+        .card-header.table-title Danh sách
+            .card-body
+                .row 
+                    .col-8
+                        
+                    .col-4.text-right
+                        a(
+                            href=`${prefixAdmin}/movies/create`
+                            class="btn btn-outline-success"
+                        ) + Thêm mới

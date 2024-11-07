@@ -40,8 +40,18 @@ div(id='header navbar navbar-expand-sm')
                         button.header__buy-popcorn ĐẶT BẮP NGAY
                 .header__top-right.d-none.d-xl-flex
                     .header__top-search.d-flex
-                        input.header__top-search-ip(type="text", placeholder="Tìm phim, rạp ...")
-                        i.fa-solid.fa-magnifying-glass
+                        form(
+                            action="/search"
+                            method="GET"
+                        )
+                            input.header__top-search-ip(
+                                type="text"
+                                placeholder="Tìm phim, rạp ..."
+                                name="keyword"
+                                value=keyword
+                            )
+                            button(type="submit")
+                                i.fa-solid.fa-magnifying-glass
                     .header__top-user.d-flex.align-items-center.btn-login
                         if(user)
                             i.fa-solid.fa-right-from-bracket(style="font-size: 20px")

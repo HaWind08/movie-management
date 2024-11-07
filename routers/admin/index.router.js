@@ -11,8 +11,8 @@ module.exports = (app) => {
 
     app.use(PATH_ADMIN + "/dashboard", authMiddleware.requireAuth, dashboardRouter);
 
-    app.use(PATH_ADMIN + "/auth", authRouter);
+    app.use(PATH_ADMIN + "/auth", authRouter); //no private
 
-    app.use(PATH_ADMIN + "/movies", movieRouter);
+    app.use(PATH_ADMIN + "/movies", authMiddleware.requireAuth, movieRouter);
 
 }

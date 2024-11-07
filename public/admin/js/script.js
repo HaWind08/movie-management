@@ -36,3 +36,26 @@ if (eyeOpen) {
     });
 }
 // End Eye login
+
+// Upload Image
+const uploadImage = document.querySelector("[upload-image]");
+if (uploadImage) {
+    const uploadImageInput = document.querySelector("[upload-image-input]");
+    const uploadImagePreview = document.querySelector("[upload-image-preview]");
+
+    uploadImageInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            uploadImagePreview.src = URL.createObjectURL(file);
+        }
+
+        const buttonClose = document.querySelector(".close");
+        buttonClose.classList.remove("hidden-close");
+        buttonClose.addEventListener("click", () => {
+            buttonClose.classList.add("hidden-close");
+            uploadImageInput.value = "";
+            uploadImagePreview.src = "";
+        })
+    });
+}
+// End Upload Image

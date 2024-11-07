@@ -43,11 +43,13 @@
     left: 220px;
     width: calc(100% - 220px);
     padding-top: 15px;
+    padding-right: 20px;
+
 }
 
 .body .main-bg {
     background: #efeff6;
-    height: 100vh;
+    overflow-x: hidden;
 }
 
 /* End body */
@@ -66,8 +68,7 @@
 .sider .inner-menu ul li a {
     color: #a4aadb;
     display: block;
-    /* padding: 6px 10px;
-    border-bottom: 1px solid #515151; */
+    padding: 12px 12px 12px 0;
 }
 
 .sider .nav-link {
@@ -75,7 +76,7 @@
     align-items: center;
     font-size: 14px;
     font-weight: 500;
-    padding: 12px;
+    padding: 0 12px;
 }
 
 .sider .nav-link i {
@@ -249,12 +250,18 @@
     font-weight: 500;
 }
 
-.form-group {
-    overflow: hidden;
+.form-control:focus {
+    box-shadow: none;
 }
 
-.form-control {
-    max-width: 100%;
+.form-wrap {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+.form-group label {
+    font-size: 14px;
 }
 
 /* Hết Danh sách phim */

@@ -9,12 +9,9 @@ const movieSchema = new mongoose.Schema(
         movie_category: String,
         description: String,
         movie_content: String,
-        discountPercentage: Number,
-        // stock: Number,
-        // price: Number,
         thumbnail: String,
         status: String,
-        duration: Number,
+        duration: String,
         featured: String,
         position: Number,
         slug: {

@@ -164,14 +164,30 @@
     border-radius: 2px;
 }
 
+.content__item-img .tag-featured {
+    background: linear-gradient(45deg, #ff9933, #ff0033);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    width: 80px;
+    height: 40px;
+    border-top-left-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .content__item-infor {
     width: 100%;
     text-align: center;
 }
 
 .content__item-name {
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 500;
     color: #f8fafc;
     margin-top: 10px;
     font-family: "Josefin Sans", sans-serif;

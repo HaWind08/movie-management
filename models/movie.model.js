@@ -13,6 +13,7 @@ const movieSchema = new mongoose.Schema(
         status: String,
         duration: String,
         featured: String,
+        country: String,
         position: Number,
         slug: {
             type: String,

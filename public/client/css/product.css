@@ -18,7 +18,8 @@
 .info__item i {
     font-size: 21px;
     margin-right: 12px;
-    color: #D2CB22;;
+    color: #D2CB22;
+    ;
 }
 
 .info__item img {
@@ -105,7 +106,7 @@
 }
 
 .theater-li {
-    width: 80rem;
+    max-width: 80rem;
     margin: auto;
 }
 

@@ -113,16 +113,29 @@
     border-radius: 5px;
 }
 
-.header__buy-tickets {
+.header__top-button a {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    border: none;
+    padding: 0 1rem;
+    margin: 0 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 100;
+    border-radius: 5px;
+    color: #000;
+}
+
+a.header__buy-tickets {
     background-color: var(--button-color-1);
 }
 
-.header__buy-tickets:hover {
+a.header__buy-tickets:hover {
     color: var(--white-color);
     background: linear-gradient(to right, #63379d, #3862c8);
 }
 
-.header__buy-popcorn {
+a.header__buy-popcorn {
     background-color: var(--button-color-2);
     color: var(--white-color);
 }

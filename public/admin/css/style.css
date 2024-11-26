@@ -174,7 +174,8 @@
 
 /* Login Form */
 .bgDefault {
-    background-image: url(/admin/images/login-bg.webp);
+    /* background-image: url(/admin/images/login-bg.webp); */
+    background-image: url(/admin/images/banner.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

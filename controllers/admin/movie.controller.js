@@ -41,6 +41,9 @@ module.exports.create = async (req, res) => {
 
 // [POST] /admin/movies/create
 module.exports.createPost = async (req, res) => {
+    req.body.ticket_prices.adult = parseInt(req.body.ticket_prices.adult);
+    req.body.ticket_prices.child = parseInt(req.body.ticket_prices.child);
+
     // Kiểm tra vị trí được điền hay không
     if(req.body.position == ""){
         const countMovies = await Movie.countDocuments();

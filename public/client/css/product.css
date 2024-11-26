@@ -116,6 +116,11 @@
     color: var(--white-color2);
 }
 
+.theater-li__li-lable {
+    color: var(--button-color-1);
+    font-weight: 600;
+}
+
 .theater-li__local {
     border: 1px solid var(--button-color-1);
     width: 150px;
@@ -128,12 +133,15 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.theater-li__li-item {
+    height: 8.5rem;
+}
+
 .theater-li__li-addr,
 .theater-li__li-item {
     font-size: 2.4rem;
     color: var(--white-color2);
     width: 100%;
-    height: 8.5rem;
     background-color: var(--button-color-2);
     border-radius: 4px;
     padding: 0 2rem;
@@ -141,6 +149,301 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.theater-li__li-addr {
+    font-size: 16px;
+}
+
 .theater-li__li-item:hover {
     color: var(--white-color2);
+}
+
+.theater-li__time-li {
+    cursor: pointer;
+    border: 1px solid var(--white-color2);
+    border-radius: 4px;
+    font-size: 1.6rem;
+    padding: 2px 10px;
+    margin: 10px 10px 20px 0;
+    text-decoration: none;
+    color: var(--white-color2);
+}
+
+.theater-li__time-li:hover,
+.theater-li__time-li.active {
+    border: 1px solid var(--button-color-1);
+    color: var(--button-color-1);
+}
+
+.select,
+.choose-corn,
+.bill {
+    display: none;
+}
+
+.select__heading {
+    width: 100%;
+    font-size: 4rem;
+    color: var(--white-color2);
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+}
+
+.select__item {
+    height: 150px;
+    border-radius: 4px;
+    border: 1px solid var(--white-color2);
+    color: var(--white-color2);
+    font-size: 1.8rem;
+    padding: 3rem;
+    font-weight: 700;
+    width: 49%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.select__name {
+    color: var(--button-color-1);
+}
+
+.select__price,
+.select__name {
+    font-size: 1.8rem;
+}
+
+.select__count {
+    width: 100px;
+    height: 38px;
+    background-color: #94a3b8;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.select__count input {
+    width: 100px;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #94a3b8;
+    color: var(--white-color2);
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.select__count input::placeholder {
+    color: var(--white-color2);
+}
+
+.select-chair__screen {
+    max-width: 70rem;
+    margin: 40px auto;
+}
+
+.select-chair__screen img {
+    width: 100%;
+}
+
+.select-chair__li {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--white-color2);
+    font-size: 1.6rem;
+    max-width: 700px;
+    margin: auto;
+    padding: 10px 0;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.select-chair__li-chair {
+    text-decoration: none;
+    color: var(--button-color-2);
+    background-color: var(--white-color2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.select-chair__li-chair:hover,
+.select-chair__li-chair.active {
+    background-color: var(--button-color-1);
+}
+
+.select-chair__note {
+    justify-content: space-around;
+}
+
+.select-chair__note-i {
+    color: var(--white-color2);
+    font-size: 1.8rem;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.select-chair__note-img {
+    width: 46px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: var(--white-color2);
+}
+
+.select-chair__note-select {
+    background-color: var(--button-color-1);
+}
+
+.select-chair__note-book {
+    background-color: #47566a;
+}
+
+.choose-corn {
+    color: var(--white-color2);
+    font-size: 1.7rem;
+    font-weight: 600;
+    padding-bottom: 200px;
+}
+
+.choose-corn__heading {
+    font-size: 2.6rem;
+    text-align: center;
+    color: var(--button-color-1);
+    margin: 40px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.choose-corn__item-name {
+    text-transform: uppercase;
+}
+
+.choose-corn__item:hover .choose-corn__item-name {
+    color: var(--button-color-1);
+    cursor: pointer;
+}
+
+.choose-corn__item-img {
+    width: 142px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.choose-corn__item-img img {
+    width: 100%;
+    height: 100%;
+    transition: all 1s ease;
+}
+
+.choose-corn__item-img:hover.choose-corn__item-img img {
+    scale: 1.2;
+}
+
+.choose-corn__item-info div {
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.choose-corn__item-count input {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #94a3b8;
+    color: var(--white-color2);
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.choose-corn__item-count input::placeholder {
+    color: var(--white-color2);
+}
+
+.bill {
+    width: 100%;
+    /* height: auto; */
+    border-top: 1px solid var(--white-color2);
+    background-color: #0f172a;
+    color: var(--white-color2);
+    position: fixed; /* Chắc chắn rằng nó sẽ ở cố định ở cuối */
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.bill__wr {
+    height: 106px;
+}
+
+.bill__name-combo {
+    font-size: 2.4rem;
+    font-family: 'Anton', sans-serif;
+}
+
+.bill__addr-combo {
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bill__coundown {
+    width: 128px;
+    height: 86px;
+    border-radius: 4px;
+    background-color: var(--button-color-1);
+    font-size: 1.5rem;
+    padding: 14px 6px;
+    color: var(--black-color);
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bill__item {
+    width: auto;
+    margin: auto 0;
+    padding: 10px 0;
+}
+
+.bill__coundown-time {
+    font-size: 2.4rem;
+    font-family: 'Anton', sans-serif;
+    font-weight: 500;
+}
+
+.bill__right-price {
+    font-size: 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bill__pright-pr {
+    font-size: 2.4rem;
+}
+
+.bill__right-btn button {
+    width: 100%;
+    height: 40px;
+    font-size: 1.6rem;
+    background-color: var(--button-color-1);
+    font-family: 'Anton', sans-serif;
+    border-radius: 4px;
+    transition: all 0.5s ease;
+}
+
+.bill__right-btn button:hover {
+    background-color: var(--button-color-2);
+    color: var(--button-color-1);
+}
+
+.bill__right-btn button:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed; 
+    opacity: 0.5;          
+}
+
+.disabled-chair,
+.disabled-chair:hover {
+    cursor: not-allowed; 
+    background: #47566A; 
+    color: #fff;
 }

@@ -4,7 +4,7 @@ const router = express.Router();
 const multer = require("multer");
 const upload = multer();
 
-const controller = require("../../controllers/admin/movie.controller");
+const controller = require("../../controllers/admin/popcorn.controller");
 const validateMovie = require("../../validates/admin/movie.validate");
 const uploadCloud = require("../../middlewares/admin/upload.middleware");
 

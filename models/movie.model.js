@@ -15,6 +15,16 @@ const movieSchema = new mongoose.Schema(
         featured: String,
         country: String,
         position: Number,
+        ticket_prices: {
+            adult: {
+                type: Number,
+                default: 0
+            },
+            child: {
+                type: Number,
+                default: 0
+            }
+        },
         slug: {
             type: String,
             slug: "title",

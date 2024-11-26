@@ -12,6 +12,14 @@ a:hover {
     width: 30%;
 }
 
+.width-input-50 {
+    width: 49%;
+}
+
+.white-space {
+    white-space: nowrap;
+}
+
 /* button */
 .btn {
     font-size: 14px;

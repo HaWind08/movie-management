@@ -194,5 +194,3 @@ if (listImages) {
     });
 }
 // End banner
-
-

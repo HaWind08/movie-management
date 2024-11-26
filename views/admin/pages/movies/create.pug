@@ -33,15 +33,34 @@ block main
                 id="movie_category"
                 name="movie_category"
             )
-        div(class="form-group")
-            label(for="country") Quốc gia
-                span(style="color:red; margin-left:2px") * 
-            input(
-                type="text"
-                class="form-control"
-                id="country"
-                name="country"
-            )
+        div(class="form-wrap")
+            div(class="form-group width-input")
+                label(for="country") Quốc gia
+                    span(style="color:red; margin-left:2px") * 
+                input(
+                    type="text"
+                    class="form-control"
+                    id="country"
+                    name="country"
+                )
+            div(class="form-group width-input")
+                label(for="adult") Giá vé người lớn
+                    span(style="color:red; margin-left:2px") * 
+                input(
+                    type="text"
+                    class="form-control"
+                    id="adult"
+                    name="ticket_prices[adult]"
+                )
+            div(class="form-group width-input")
+                label(for="child") Giá vé trẻ em
+                    span(style="color:red; margin-left:2px") * 
+                input(
+                    type="text"
+                    class="form-control"
+                    id="child"
+                    name="ticket_prices[child]"
+                )
         div(class="form-group form-check form-check-inline")
             input(
                 type="radio"

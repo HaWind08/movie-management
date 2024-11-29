@@ -1,4 +1,5 @@
 const Ticket = require("../../models/ticket.model");
+const Popcorn = require("../../models/popcorn.model");
 
 // [GET] /ticket (/movies/detail)
 module.exports.index = async (req, res) => {
@@ -26,64 +27,139 @@ module.exports.addPost = async (req, res) => {
     const ticket = await Ticket.findOne({
         _id: ticketId
     });
-    // const existMovieInTicket = ticket.tickets.find(item => item.movie_id == movieId);
-    // if (existMovieInTicket) {
-    //     // Cập nhật lại
-    //     await Ticket.updateOne(
-    //         { _id: ticketId, "tickets.movie_id": movieId },
-    //         {
-    //             $set: {
-    //                 'tickets.$.adult_quantity': adult_quantity,
-    //                 'tickets.$.child_quantity': child_quantity
-    //             },
-    //         }
-    //     );
-    // } else {
-    //     const objectTicketsModel = {
-    //         movie_id: movieId,
-    //         adult_quantity: adult_quantity,
-    //         child_quantity: child_quantity,
-    //     };
+    const existMovieInTicket = ticket.tickets.find(item => item.movie_id == movieId);
+    if (existMovieInTicket) {
+        // Cập nhật lại
+        await Ticket.updateOne(
+            { _id: ticketId, "tickets.movie_id": movieId },
+            {
+                $set: {
+                    'tickets.$.adult_quantity': adult_quantity,
+                    'tickets.$.child_quantity': child_quantity,
+                    'tickets.$.expireAt': Date.now()
+                },
+            }
+        );
 
-    //     await Ticket.updateOne({ _id: ticketId }, {
-    //         // data save
-    //         $push: { tickets: objectTicketsModel },
-    //     });
+        // Cập nhật bắp nước
+        const objectPopcornModel = await Promise.all(
+            popcorns_id.map(async (id, index) => {
+                const quantity = parseInt(popcorns_quantity[index] || 0);
+                if (quantity > 0) {
+                    const popcornDetail = await Popcorn.findById(id);
+                    return {
+                        popcorn_id: id,
+                        popcorn_quantity: quantity,
+                        popcorn_name: popcornDetail.title
+                    };
+                }
+            })
+        ).then(results => results.filter(Boolean));
 
-    //     // popcorns
-    //     const objectPopcornModel = popcorns_id.map((id, index) => {
-    //         const quantity = parseInt(popcorns_quantity[index] || 0)
-    //         if (quantity > 0) {
-    //             return {
-    //                 popcorn_id: id,
-    //                 popcorn_quantity: quantity
-    //             }
-    //         }
-    //     }).filter(Boolean);
+        // Cập nhật bắp nước
+        if (objectPopcornModel.length > 0) {
+            await Ticket.updateOne(
+                { _id: ticketId, "tickets.movie_id": movieId },
+                {
+                    $set: {
+                        'popcorns': objectPopcornModel
+                    }
+                }
+            );
+        }
 
-    //     if (objectPopcornModel.length > 0) {
-    //         await Ticket.updateOne(
-    //             { _id: ticketId },
-    //             { $push: { popcorns: { $each: objectPopcornModel } } }
-    //         );
-    //     };
+        // Cập nhật ghế ngồi
+        if (seats && seats.length > 0) {
+            await Ticket.updateOne(
+                { _id: ticketId, "tickets.movie_id": movieId },
+                {
+                    $set: {
+                        'seats': seats
+                    }
+                }
+            );
+        }
 
-    //     // seats
-    //     await Ticket.updateOne(
-    //         { _id: ticketId },
-    //         { $push: { seats: { $each: seats } } }
-    //     );
-    // };
+        // Cập nhật các thông tin vé khác
+        await Ticket.updateOne(
+            { _id: ticketId, "tickets.movie_id": movieId },
+            {
+                $set: {
+                    theater: theater,
+                    address: address,
+                    time: time,
+                    totalPrice: totalPrice,
+                    adult_name: adult_name,
+                    child_name: child_name
+                }
+            }
+        );
+    } else {
+        const objectTicketsModel = {
+            movie_id: movieId,
+            adult_quantity: adult_quantity,
+            child_quantity: child_quantity,
+            expireAt: Date.now()
+        };
 
-    ticket.theater = theater;
-    ticket.address = address;
-    ticket.time = time;
-    ticket.totalPrice = totalPrice;
-    ticket.adult_name = adult_name;
-    ticket.child_name = child_name;
+        await Ticket.updateOne({ _id: ticketId }, {
+            // data save
+            $push: { tickets: objectTicketsModel },
+        });
+
+        // popcorns
+        const objectPopcornModel = await Promise.all(
+            popcorns_id.map(async (id, index) => {
+                const quantity = parseInt(popcorns_quantity[index] || 0);
+                if (quantity > 0) {
+                    const popcornDetail = await Popcorn.findById(id);
+                    return {
+                        popcorn_id: id,
+                        popcorn_quantity: quantity,
+                        popcorn_name: popcornDetail.title
+                    };
+                }
+            })
+        ).then(results => results.filter(Boolean));
+
+        if (objectPopcornModel.length > 0) {
+            await Ticket.updateOne(
+                { _id: ticketId },
+                { $push: { popcorns: { $each: objectPopcornModel } } }
+            );
+        };
+
+        // seats
+        await Ticket.updateOne(
+            { _id: ticketId },
+            { $push: { seats: { $each: seats } } }
+        );
+
+        // ticket info
+        ticket.theater = theater;
+        ticket.address = address;
+        ticket.time = time;
+        ticket.totalPrice = totalPrice;
+        ticket.adult_name = adult_name;
+        ticket.child_name = child_name;
+
+        await Ticket.updateOne(
+            { _id: ticketId },
+            {
+                $set: {
+                    theater: theater,
+                    address: address,
+                    time: time,
+                    totalPrice: totalPrice,
+                    adult_name: adult_name,
+                    child_name: child_name
+                }
+            }
+        );
+    };
     // console.log(ticket);
-
-    req.flash("success", "Bạn đã đặt vé, vui lòng thanh toán!");
+    // console.log(ticket.theater);
+    // req.flash("success", "Bạn đã đặt vé, vui lòng thanh toán!");
     res.redirect("/checkout");
 };
 

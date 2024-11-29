@@ -20,45 +20,61 @@ block main
                 .col-xl-6
                     form(action="")
                         .content__info Họ và tên
-                        input.content__input(type="text", placeholder="Họ và tên")
+                        input.content__input(type="text", placeholder="Họ và tên" required)
                         .content__info Số điện thoại
-                        input.content__input(type="text", placeholder="Số điện thoại")
+                        input.content__input(type="text", placeholder="Số điện thoại" required)
                         .content__info Email
-                        input.content__input(type="email", placeholder="Email")
+                        input.content__input(type="email", placeholder="Email" required)
                         .content__condition.d-flex
-                            input(type="checkbox").mr-1
+                            input(type="checkbox" checked).mr-1
                             | Đảm bảo mua vé đúng số tuổi quy định.
                         .content__condition.d-flex
-                            input(type="checkbox").mr-1
+                            input(type="checkbox" checked).mr-1
                             | Đồng ý với điều khoản của Cinestar.
                         button.submit Tiếp tục
                 .content__right.col-xl-6.mb-5
-                    .content__right-heading CƯỜI XUYÊN BIÊN GIỚI
-                    .content__address
-                        p Cinestar Hà Nội
-                        | Quận Nam Từ Liêm, Hà Nội
-                    .content__time
-                        p Thời gian
-                        | 20:00
-                    .content__right-info.my-4.d-flex
-                        .content__right-detail.me-5
-                            p Phòng chiếu
-                            | 05
-                        .content__right-detail.me-5
-                            p Số vé
-                            | 01
-                        .content__right-detail
-                            p Loại vé
-                            | Người lớn
-                    .content__right-info.d-flex
-                        .content__right-detail.me-5
-                            p Loại ghế
-                            | Ghế thường
-                        .content__right-detail
-                            p Số ghế
-                            | A01
-                    .content__attach Bắp nước
-                    .content__right-line
-                    .content__pay.d-flex.justify-content-between
-                        .content__pay-lable SỐ TIỀN CẦN THANH TOÁN
-                        .content__pay-mn 100000 VNĐ
+                    each item in ticketDetail.tickets
+                        .content__right-heading #{item.movieInfo.title}
+                        .content__address
+                            p #{ticketDetail.theater}
+                            | #{ticketDetail.address}
+                        .content__time
+                            p Thời gian
+                            | #{ticketDetail.time}
+                        .content__right-info.my-4.d-flex
+                            .content__right-detail.me-5
+                                p Phòng chiếu
+                                | 10
+                            .content__right-detail.me-5
+                                p Số vé
+                                | #{item.adult_quantity + item.child_quantity}
+                            .content__right-detail
+                                p Loại vé
+                                if item.adult_quantity > 0 && item.child_quantity > 0
+                                    | #{item.adult_quantity} Người lớn và #{item.child_quantity} Trẻ em
+                                else if item.adult_quantity > 0
+                                    | #{item.adult_quantity} Người lớn
+                                else if item.child_quantity > 0
+                                    | #{item.child_quantity} Trẻ em
+                        .content__right-info.d-flex
+                            .content__right-detail.me-5
+                                p Loại ghế
+                                | Ghế thường
+                            .content__right-detail
+                                p Số ghế
+                                if ticketDetail.seats.length > 1
+                                    | #{ticketDetail.seats.join(", ")}
+                                else 
+                                    | #{ticketDetail.seats[0]}
+                        .content__attach 
+                            p Bắp nước
+                            if ticketDetail.popcorns.length > 0
+                                ul
+                                    each popcorn in ticketDetail.popcorns
+                                        li #{popcorn.popcorn_quantity} #{popcorn.popcorn_name}
+                            else
+                                p Không có bắp nước
+                        .content__right-line
+                        .content__pay.d-flex.justify-content-between
+                            .content__pay-lable SỐ TIỀN CẦN THANH TOÁN
+                            .content__pay-mn #{ticketDetail.totalPrice} VNĐ

@@ -23,38 +23,64 @@ block main
                     .index-item.index-item-2
 
         //- fast booking
-        #section.container.px-lg-5
-            .section
-                .section__option
-                    .section__li.row.mx-auto.mx-md-2.mx-lg-5
-                        .col-12.col-sm-12.col-md-2.col-xl-2
-                            .section__title ĐẶT VÉ NHANH
-                        .col-md-2.col-xl-2.my-3.my-sm-0.my-md-0.my-lg-0
-                            .section__chose
-                                | 1. Chọn rạp
-                                i.fa-solid.fa-chevron-down.ml-2
-                                .section__chose-li
-                                    .section__chose-item
-                        .col-md-2.col-xl-2.d-none.d-md-block
-                            .section__chose
-                                | 2. Chọn phim
-                                i.fa-solid.fa-chevron-down.ml-2
-                        .col-md-2.col-xl-2.d-none.d-md-block
-                            .section__chose
-                                | 3. Chọn ngày
-                                i.fa-solid.fa-chevron-down.ml-2
-                        .col-md-2.col-xl-2.d-none.d-md-block
-                            .section__chose
-                                | 4. Chọn suất
-                                i.fa-solid.fa-chevron-down.ml-2
-                        .col-12.col-sm-12.col-md-2.col-xl-2
-                            .section__order Đặt ngay
+        //- #section.container.px-lg-5
+        //-     .section
+        //-         .section__option
+        //-             .section__li.row.mx-auto.mx-md-2.mx-lg-5
+        //-                 .col-12.col-sm-12.col-md-2.col-xl-2
+        //-                     .section__title ĐẶT VÉ NHANH
+        //-                 .col-md-2.col-xl-2.my-3.my-sm-0.my-md-0.my-lg-0
+        //-                     .section__chose
+        //-                         | 1. Chọn rạp
+        //-                         i.fa-solid.fa-chevron-down.ml-2
+        //-                         .section__chose-li
+        //-                             .section__chose-item
+        //-                 .col-md-2.col-xl-2.d-none.d-md-block
+        //-                     .section__chose
+        //-                         | 2. Chọn phim
+        //-                         i.fa-solid.fa-chevron-down.ml-2
+        //-                 .col-md-2.col-xl-2.d-none.d-md-block
+        //-                     .section__chose
+        //-                         | 3. Chọn ngày
+        //-                         i.fa-solid.fa-chevron-down.ml-2
+        //-                 .col-md-2.col-xl-2.d-none.d-md-block
+        //-                     .section__chose
+        //-                         | 4. Chọn suất
+        //-                         i.fa-solid.fa-chevron-down.ml-2
+        //-                 .col-12.col-sm-12.col-md-2.col-xl-2
+        //-                     .section__order Đặt ngay
 
         //- movies
         #content
             .container.px-lg-5
                 .content__title
                     .content__title-showing PHIM ĐANG CHIẾU
+                .row.g-5
+                    each item in moviesFeatured
+                        .col-6.col-sm-6.col-md-4.col-lg-3.col-xl-3.content__contain
+                            .content__item.content__over
+                                a.content__item-link(href=`/movies/detail/${item.slug}`)
+                                    .content__item-img
+                                        .content__item-overlay
+                                        img(src=item.thumbnail alt=item.title)
+                                        div.tag-featured Nổi bật
+                                    .content__item-infor
+                                        .content__item-name #{item.title}
+                                        .content__item-action
+                                            .content__item-action-span
+                                                img(src="/client/images/icon-play-vid.svg" alt="")
+                                                .content__item-action-trailer Xem Trailer
+                                            .content__item-action-button ĐẶT VÉ
+                .content__see-more
+                    .content__see-btn 
+                        a(href="/movies") XEM THÊM
+
+        div.my-5.d-inline-block
+
+        #content
+            .container.px-lg-5
+                .content__title
+                    .content__title-showing PHIM SẮP CHIẾU
                 .row.g-5
                     each item in moviesFeatured
                         .col-6.col-sm-6.col-md-4.col-lg-3.col-xl-3.content__contain

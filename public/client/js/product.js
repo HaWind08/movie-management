@@ -50,13 +50,11 @@ const getTotalTickets = () => {
 if (formTicket) {
     const chairs = formTicket.querySelectorAll('input[type="checkbox"]');
     const bookButton = formTicket.querySelector('.bill__right-btn button');
-    console.log(bookButton);
-    
 
     const bookButtonState = () => {
         const selectedChairs = document.querySelectorAll(".select-chair__li-chair.active");
-        
-        if(selectedChairs.length > 0) {
+
+        if (selectedChairs.length > 0) {
             bookButton.disabled = false;
         } else {
             bookButton.disabled = true;

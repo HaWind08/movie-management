@@ -1,0 +1,136 @@
+.toastAlert {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    background: #DCEDC8;
+    padding: 8px 32px 8px 12px;
+    box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 9999;
+}
+
+.toastAlert .toastAlert-content {
+    display: flex;
+    align-items: center;
+}
+
+.toastAlert-content .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    min-width: 24px;
+    background-color: #8BC34A;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+}
+
+.toastAlert-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text.text-2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #33691E;
+}
+
+.message .text.text-1 {
+    font-weight: 700;
+    color: #33691E;
+}
+
+.toastAlert .close {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.toastAlert .close:hover {
+    opacity: 1;
+}
+
+[show-alert].alert-hidden {
+    animation-name: alert-hidden;
+    animation-fill-mode: both;
+}
+
+@keyframes alert-hidden {
+    from {
+        right: 15px;
+    }
+
+    to {
+        right: -100%;
+        display: none;
+    }
+}
+
+.toastAlert .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+}
+
+.toastAlert .progress:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #8BC34A;
+}
+
+.progress.active:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+        display: none;
+    }
+}
+
+.toastAlert-error {
+    background-color: #FFCCBC;
+}
+
+.toastAlert-error .check {
+    background-color: #f44336;
+}
+
+.toastAlert-error .message .text {
+    color: #b71c1c;
+}
+
+.toastAlert-error .progress:before {
+    background-color: #f44336;
+}
+
+.toastAlert-success {
+    background-color: #DCEDC8;
+}
+
+.toastAlert-success .check {
+    background-color: #8BC34A;
+}
+
+.toastAlert-success .message .text {
+    color: #33691E;
+}
+
+.toastAlert-success .progress:before {
+    background-color: #8BC34A;
+}

@@ -26,6 +26,12 @@ const orderSchema = new mongoose.Schema(
             type: Array,
             default: []
         },
+        theater: String,
+        address: String,
+        time: String,
+        totalPrice: Number,
+        adult_name: String,
+        child_name: String,
         deleted: {
             type: Boolean,
             default: false

@@ -45,6 +45,11 @@ app.use(express.static(`${__dirname}/public`));
 // Router
 router(app);
 routerAdmin(app);
+app.get("*", (req, res) => {
+    res.render("client/pages/errors/404.pug", {
+        pageTitle: "404 Not Found"
+    })
+})
 // End router
 
 app.listen(port, () => {

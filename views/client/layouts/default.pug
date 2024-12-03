@@ -26,10 +26,11 @@ html
         link(rel="stylesheet", href="/client/css/product.css")
         link(rel="stylesheet", href="/client/css/payment.css")
         link(rel="stylesheet", href="/client/css/style.css")
+        link(rel="stylesheet", href="/client/css/alert.css")
 
     body
-        +alert-error(3000)
-        +alert-success(3000)
+        +alert-error(5000)
+        +alert-success(5000)
 
         include ../partials/header.pug
 
@@ -51,3 +52,4 @@ html
         script(src="/client/js/user.js") 
         script(src="/client/js/product.js") 
         script(src="/client/js/script.js")  
+        script(src="/client/js/alert.js")  

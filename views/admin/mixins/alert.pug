@@ -8,7 +8,7 @@ mixin alert-success(time)
             .toastAlert-content
                 i.fas.fa-solid.fa-check.check
                 .message
-                    span.text.text-1 Thành công
+                    span.text.text-1 Success
                     span.text.text-2 #{messages.success} 
             i.fa-solid.fa-xmark.close
             .progress(class=messages.success ? 'active' : '')
@@ -23,7 +23,7 @@ mixin alert-error(time)
             .toastAlert-content
                 i.fas.fa-solid.fa-xmark.check
                 .message
-                    span.text.text-1 Lỗi
+                    span.text.text-1 Error
                     span.text.text-2 #{messages.error} 
             i.fa-solid.fa-xmark.close
             .progress(class=messages.error ? 'active' : '')

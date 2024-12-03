@@ -19,6 +19,7 @@ const orderSchema = new mongoose.Schema(
         popcorns: [
             {
                 popcorn_id: String,
+                popcorn_name: String,
                 popcorn_quantity: Number
             }
         ],

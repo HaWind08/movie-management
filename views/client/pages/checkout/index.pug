@@ -5,33 +5,51 @@ block main
         .container
             .heading TRANG THANH TOÁN
             .process.d-flex
-                a.process__step.active(href="#")
+                .process__step.active
                     .process__step-number 1
                     .process__step-txt THÔNG TIN KHÁCH HÀNG
                 .process__step-line
-                a.process__step(href="#")
+                .process__step
                     .process__step-number 2
-                    .process__step-txt THANH TOÁN
-                .process__step-line
-                a.process__step(href="#")
-                    .process__step-number 3
                     .process__step-txt THÔNG TIN VÉ PHIM
+                //- .process__step-line
+                //- a.process__step(href="#")
+                //-     .process__step-number 3
+                //-     .process__step-txt THÔNG TIN VÉ PHIM
             .content.row.pt-5.font-payment
                 .col-xl-6
-                    form(action="")
+                    form(
+                        action="/checkout/order"
+                        method="POST"
+                    )
                         .content__info Họ và tên
-                        input.content__input(type="text", placeholder="Họ và tên" required)
+                        input.content__input(
+                            type="text"
+                            name="fullName"
+                            placeholder="Họ và tên" 
+                            required
+                        )
                         .content__info Số điện thoại
-                        input.content__input(type="text", placeholder="Số điện thoại" required)
-                        .content__info Email
-                        input.content__input(type="email", placeholder="Email" required)
+                        input.content__input(
+                            type="text"
+                            name="phone"
+                            placeholder="Số điện thoại" 
+                            required
+                        )
+                        .content__info Địa chỉ
+                        input.content__input(
+                            type="text"
+                            name="address"
+                            placeholder="Địa chỉ" 
+                            required
+                        )
                         .content__condition.d-flex
                             input(type="checkbox" checked).mr-1
                             | Đảm bảo mua vé đúng số tuổi quy định.
                         .content__condition.d-flex
                             input(type="checkbox" checked).mr-1
                             | Đồng ý với điều khoản của Cinestar.
-                        button.submit Tiếp tục
+                        button.submit Thanh toán
                 .content__right.col-xl-6.mb-5
                     each item in ticketDetail.tickets
                         .content__right-heading #{item.movieInfo.title}

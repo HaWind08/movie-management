@@ -1,0 +1,85 @@
+extends ../../layouts/default.pug
+
+block main 
+    #body.body
+        .container
+            .heading ĐẶT HÀNG THÀNH CÔNG
+            .process.d-flex
+                .process__step.active
+                    .process__step-number 1
+                    .process__step-txt THÔNG TIN KHÁCH HÀNG
+                .process__step-line(style="background: rgb(243 234 40)")
+                .process__step.active
+                    .process__step-number 2
+                    .process__step-txt THÔNG TIN VÉ PHIM
+
+            .row.mt-5 
+                .col-12 
+                    div(class="alert alert-success alert-font")
+                        | Chúc mừng bạn đã đặt vé thành công! Chúng tôi sẽ xử lý đơn hàng của bạn trong thời gian sớm nhất.
+
+            if(order)
+                .row 
+                    .col-12
+                        h4(
+                            class="mt-5 mb-3"
+                            style="color: #fff; font-size: 18px"
+                        ) Thông tin cá nhân
+                        table(
+                            class="table table-bordered"
+                            style="font-size: 16px; font-family: sans-serif; --bs-table-bg: transparent; --bs-table-color: #fff;"
+                        )
+                            tbody 
+                                tr
+                                    td(style="padding: 10px") Họ tên
+                                    td(style="padding: 10px")
+                                        b #{order.userInfo.fullName}
+                                tr
+                                    td(style="padding: 10px") Địa chỉ
+                                    td(style="padding: 10px")
+                                        b #{order.userInfo.address}
+                                tr
+                                    td(style="padding: 10px") Điện thoại
+                                    td(style="padding: 10px")
+                                        b #{order.userInfo.phone}
+
+                .row.pb-5 
+                    .col-12
+                        h4(
+                            class="mt-5 mb-3"
+                            style="color: #fff; font-size: 18px"
+                        ) Thông tin vé
+                        table(
+                            class="table table-bordered"
+                            style="font-size: 16px; font-family: sans-serif; --bs-table-bg: transparent; --bs-table-color: #fff;"
+                        )
+                            thead 
+                                tr 
+                                    th Mã vé
+                                    th Ảnh
+                                    th Tên phim
+                                    th Thời gian
+                                    th Số lượng
+                                    th Tổng tiền
+                            tbody
+                                if(order.tickets.length > 0)
+                                    each item, index in order.tickets
+                                        tr
+                                            td(style="padding: 10px") #{index + 1}
+                                            td(style="padding: 10px") 
+                                                img(
+                                                    src=item.movieInfo.thumbnail
+                                                    alt=item.movieInfo.title 
+                                                    width="80px"
+                                                    height="120px"
+                                                )
+                                            td(style="padding: 10px") #{item.movieInfo.title}
+                                            td(style="padding: 10px") #{order.time}
+                                            td(style="padding: 10px") 
+                                                - if(item.adult_quantity > 0)
+                                                    | #{item.adult_quantity} Người lớn
+                                                br
+                                                - if(item.child_quantity > 0)
+                                                    | #{item.child_quantity} Trẻ em
+                                            td(style="padding: 10px") #{order.totalPrice} VNĐ
+                                            

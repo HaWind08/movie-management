@@ -1,17 +1,29 @@
 mixin alert-success(time)
     - if (messages.success)
-        .message.info
-            div(
-                class="alert alert-success"
-                show-alert
-                data-time=time
-            ) #{messages.success} <span close-alert>x</span>
+        div(
+            class="toastAlert toastAlert-success"
+            show-alert
+            data-time=time
+        )
+            .toastAlert-content
+                i.fas.fa-solid.fa-check.check
+                .message
+                    span.text.text-1 Success
+                    span.text.text-2 #{messages.success} 
+            i.fa-solid.fa-xmark.close
+            .progress(class=messages.success ? 'active' : '')
 
 mixin alert-error(time)
     - if (messages.error)
-        .message.info
-            div(
-                class="alert alert-danger"
-                show-alert
-                data-time=time
-            ) #{messages.error} <span close-alert>x</span>
+        div(
+            class="toastAlert toastAlert-error"
+            show-alert
+            data-time=time
+        )
+            .toastAlert-content
+                i.fas.fa-solid.fa-xmark.check
+                .message
+                    span.text.text-1 Error
+                    span.text.text-2 #{messages.error} 
+            i.fa-solid.fa-xmark.close
+            .progress(class=messages.error ? 'active' : '')

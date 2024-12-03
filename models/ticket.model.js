@@ -29,7 +29,8 @@ const ticketSchema = new mongoose.Schema(
         child_name: String,
         expireAt: {
             type: Date,
-            expires: 86400 // 1 day
+            default: () => new Date(Date.now() + 86400 * 1000), // 1 ngày
+            expires: 0,
         }
     },
     {

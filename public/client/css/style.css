@@ -23,16 +23,19 @@ body {
     align-items: center;
 }
 
-a.header__top-user-login {
+a.header__top-user-login,
+a.header__top-user-info {
     align-items: center;
 }
 
-a.header__top-user-login i {
+a.header__top-user-login i,
+a.header__top-user-info i {
     font-size: 20px;
     margin-right: 8px;
 }
 
-a.header__top-user-login:hover {
+a.header__top-user-login:hover,
+a.header__top-user-info:hover {
     color: var(--button-color-1);
 }
 /* End header */

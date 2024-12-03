@@ -54,6 +54,11 @@ div(id='header navbar navbar-expand-sm')
                                 i.fa-solid.fa-magnifying-glass
                     .header__top-user.d-flex.align-items-center.btn-login
                         if(user)
+                            i.fa-regular.fa-circle-user(style="font-size: 20px")
+                            a.header__top-user-info.d-none.d-xl-flex(
+                                href="/user/info"
+                                style="margin-right: 20px"
+                            ) #{user.fullName.length > 5 ? user.fullName.substring(0, 5) + '...' : user.fullName}
                             i.fa-solid.fa-right-from-bracket(style="font-size: 20px")
                             a.header__top-user-login.d-none.d-xl-flex.button-logout(href="/user/logout") Đăng xuất
                         else
@@ -63,38 +68,12 @@ div(id='header navbar navbar-expand-sm')
                 .header__top-right-sm.d-none.d-md-flex.d-xl-none
                     i.fa-solid.fa-magnifying-glass
                     i.fa-regular.fa-user.fa-2x.btn-login
-                .header__top-language.d-none.d-md-flex.align-items-center.px-lg-5
+                .header__top-language.d-none.d-md-flex.align-items-center.px-lg-3
                     img(src="/client/images/co vn.png", alt="flag-vn", class="header__top-flag")
                     select
                         option(value="vietnam") Việt Nam
             .header__middle.align-items-center.d-none.d-md-flex.justify-content-between
-                //- .header__middle-left.d-flex
-                //-     .header__middle-theater.header__middle-button.me-4
-                //-         i.fa-solid.fa-location-dot.mr-1
-                //-         | Chọn rạp
-                //-         .header__middle-menu
-                //-             .row
-                //-                 .header__menu-li.col-lg-4.col-xl-4
-                //-                     .header__menu2-item: a(href="#") Cinestar Hà Nội
-                //-                     .header__menu2-item: a(href="#") Cinestar Hà Tĩnh
-                //-                     .header__menu2-item: a(href="#") Cinestar Nghệ An
-                //-                 .header__menu-li.col-lg-4.col-xl-4
-                //-                     .header__menu2-item: a(href="#") Cinestar Thanh Hóa
-                //-                     .header__menu2-item: a(href="#") Cinestar Hà Nam
-                //-                     .header__menu2-item: a(href="#") Cinestar Hải Phòng
-                //-                 .header__menu-li.col-lg-4.col-xl-4
-                //-                     .header__menu2-item: a(href="#") Cinestar Ninh Bình
-                //-                     .header__menu2-item: a(href="#") Cinestar TP.HCM
-                //-                     .header__menu2-item: a(href="#") Cinestar Bình Dương
-                //-     .header__middle-showtimes.header__middle-button.ms-5
-                //-         i.fa-solid.fa-calendar-days.mr-1
-                //-         | Lịch chiếu
-                //- .header__middle-right
-                //-     .header__middle-right-item.d-flex
-                //-         a.header__middle-li.header__middle-button.px-lg-4(href="#") Khuyến mãi
-                //-         a.header__middle-li.header__middle-button.px-lg-4(href="#") Thuê sự kiện
-                //-         a.header__middle-li.header__middle-button.px-lg-4(href="#") Tất cả các giải trí
-                //-         a.header__middle-li.header__middle-button.px-lg-4(href="#") Giới thiệu
+                
 form(
         action=""
         method="POST"

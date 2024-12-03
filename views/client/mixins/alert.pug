@@ -11,7 +11,7 @@ mixin alert-success(time)
                     span.text.text-1 Success
                     span.text.text-2 #{messages.success} 
             i.fa-solid.fa-xmark.close
-            .progress(class=messages.success ? 'active' : '')
+            .progressAlert(class=messages.success ? 'active' : '')
 
 mixin alert-error(time)
     - if (messages.error)
@@ -26,4 +26,4 @@ mixin alert-error(time)
                     span.text.text-1 Error
                     span.text.text-2 #{messages.error} 
             i.fa-solid.fa-xmark.close
-            .progress(class=messages.error ? 'active' : '')
+            .progressAlert(class=messages.error ? 'active' : '')

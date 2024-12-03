@@ -49,6 +49,7 @@
     float: right;
     padding: 0 4px;
     margin: 0 4px;
+    color: #000;
 }
 
 .header__middle-info-user {
@@ -68,7 +69,7 @@
     width: 350px;
     border: 1px solid #ddd;
     border-radius: 2rem;
-    margin: 18px 0;
+    margin: 14px 0;
     line-height: 45px;
     display: flex;
     font-family: "Josefin Sans", sans-serif;

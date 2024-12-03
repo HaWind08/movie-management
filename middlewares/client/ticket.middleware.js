@@ -10,7 +10,7 @@ module.exports.ticketId = async (req, res, next) => {
         await ticket.save();
         // console.log(ticket);
 
-        const expiresCookies = 1 * 24 * 60 * 60 * 1000; //30 * 24 * 60 * 60 * 1000
+        const expiresCookies = 30 * 24 * 60 * 60 * 1000; //30 * 24 * 60 * 60 * 1000
         res.cookie("ticketId", ticket.id, {
             expires: new Date(Date.now() + expiresCookies)
         });

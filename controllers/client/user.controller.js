@@ -1,6 +1,9 @@
 const md5 = require("md5");
 const User = require("../../models/user.model");
 const ForgotPassword = require("../../models/forgot-password.model");
+const Ticket = require("../../models/ticket.model");
+const Order = require("../../models/order.model");
+const Movie = require("../../models/movie.model");
 
 const generateHelper = require("../../helpers/generate");
 const sendMailHelper = require("../../helpers/sendMail");
@@ -69,8 +72,27 @@ module.exports.loginPost = async (req, res) => {
         return;
     };
 
-    res.cookie("tokenUser", user.tokenUser);
+    // khi đăng nhập - vé
+    const ticket = await Ticket.findOne({ //tìm ticketId
+        user_id: user.id
+    });
 
+    if (ticket) {
+        res.cookie("ticketId", ticket.id); // trả ra ticketId đã có
+    } else {
+        const newTicket = new Ticket({ user_id: user.id });
+        await newTicket.save();
+        const expiresCookies = 30 * 24 * 60 * 60 * 1000;
+        res.cookie("ticketId", newTicket.id, {
+            expires: new Date(Date.now() + expiresCookies)
+        });
+
+        await Ticket.updateOne({ _id: req.cookies.ticketId }, {
+            user_id: user.id
+        });
+    };
+
+    res.cookie("tokenUser", user.tokenUser);
     req.flash("success", "Đăng nhập thành công!");
     res.redirect("/");
 };
@@ -78,6 +100,7 @@ module.exports.loginPost = async (req, res) => {
 // [GET][POST] /user/logout
 module.exports.logout = async (req, res) => {
     res.clearCookie("tokenUser");
+    res.clearCookie("ticketId");
     req.flash("error", "Tài khoản của bạn đã được đăng xuất!");
     res.redirect("/");
 };
@@ -192,7 +215,7 @@ module.exports.resetPasswordPost = async (req, res) => {
     console.log(password);
     console.log(tokenUser);
 
-    const user = await User.findOne({tokenUser: tokenUser});
+    const user = await User.findOne({ tokenUser: tokenUser });
 
     if (user.password === md5(password)) {
         req.flash("error", "Mật khẩu mới phải khác mật khẩu cũ!");
@@ -206,4 +229,49 @@ module.exports.resetPasswordPost = async (req, res) => {
 
     req.flash("success", "Đổi mật khẩu thành công!");
     res.redirect("/");
+};
+
+// [GET] /user/info
+module.exports.info = async (req, res) => {
+    res.render("client/pages/user/info.pug", {
+        pageTitle: "Thông tin cá nhân",
+    });
+};
+
+// [PATCH] /user/info/edit/:id
+module.exports.editInfo = async (req, res) => {
+    try {
+        await User.updateOne({ _id: req.params.id }, {
+            ...req.body
+        });
+
+        req.flash("success", "Cập nhật thành công!");
+    } catch (error) {
+        req.flash("error", "Cập nhật thất bại!");
+    }
+
+    res.redirect("back");
+};
+
+// [GET] /user/history
+module.exports.history = async (req, res) => {
+    // console.log(res.locals.user.id);
+    const orderHistory = await Order.find({
+        user_id: res.locals.user.id
+    });
+
+    for (const order of orderHistory) {
+        for (const ticket of order.tickets) {
+            const movieInfo = await Movie.findOne({
+                _id: ticket.movie_id,
+            }).select("title");
+
+            ticket.movieInfo = movieInfo;
+        };
+    };
+
+    res.render("client/pages/user/history.pug", {
+        pageTitle: "Lịch sử đặt vé",
+        orderHitory: orderHistory
+    });
 };

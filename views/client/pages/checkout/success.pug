@@ -77,9 +77,12 @@ block main
                                             td(style="padding: 10px") #{order.time}
                                             td(style="padding: 10px") 
                                                 - if(item.adult_quantity > 0)
-                                                    | #{item.adult_quantity} Người lớn
-                                                br
+                                                    p #{item.adult_quantity} Người lớn
                                                 - if(item.child_quantity > 0)
-                                                    | #{item.child_quantity} Trẻ em
+                                                    p #{item.child_quantity} Trẻ em
                                             td(style="padding: 10px") #{order.totalPrice} VNĐ
+
+                .row 
+                    div.text-right
+                        a(href="/").success-button Quay về trang chủ
                                             

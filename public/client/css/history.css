@@ -1,0 +1,89 @@
+#info {
+    color: #fff;
+    padding: 60px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info-sidebar {
+    background: linear-gradient(106deg, #639, #36c 102.69%);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.info-sidebar-block {
+    border-bottom: .1rem solid rgba(248, 250, 252, .2);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+}
+
+.info-sidebar .about-user {
+    display: inline-flex;
+    align-items: center;
+}
+
+.info-menu-item.active a {
+    color: #f3ea28;
+}
+
+.info-sidebar .about-user i {
+    font-size: 42px;
+    margin-right: 16px;
+}
+
+.info-sidebar .about-user .info {
+    font-size: 16px;
+}
+
+.info-menu ,
+.info-sidebar .tag {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.info-sidebar .tag {
+    color: #f3ea28;
+    font-weight: 700;
+}
+
+.info-menu-item a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    gap: 10px;
+    position: relative;
+}
+
+.info-menu-item a::before {
+    background: #f3ea28;
+    content: "";
+    height: 100%;
+    width: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.info-menu-item a.active::before {
+    opacity: 1;
+}
+
+.info-heading {
+    font-size: 30px;
+    margin-bottom: 32px;
+    margin-top: 8px;
+    font-family: "Anton", sans-serif;
+}
+
+.history .table th {
+    border-top: none;
+    border-bottom: 1px solid #000;
+}
+
+.history-null {
+    font-size: 16px;
+    margin-top: 80px;
+    text-align: center;
+}

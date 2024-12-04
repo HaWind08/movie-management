@@ -15,14 +15,13 @@ module.exports.index = async (req, res) => {
             const movieId = item.movie_id;
             const movieInfo = await Movie.findOne({
                 _id: movieId,
-            }).select("title thumnail slug");
+            }).select("title thumnail");
 
             item.movieInfo = movieInfo;
-        }
+        };
+    };
 
-    }
-
-    // console.log(ticket);
+    console.log(ticket);
 
     res.render("client/pages/checkout/index.pug", {
         pageTitle: "Đặt hàng",
@@ -63,13 +62,13 @@ module.exports.order = async (req, res) => {
 
     const seats = ticket.seats.map(seat => seat);
 
-    // console.log(ticketId);
-    // console.log(userInfo);
-    // console.log(tickets);
-    // console.log(popcorns);
-    // console.log(seats);
+    let user_id = "";
+    if(res.locals.user) {
+        user_id = res.locals.user.id;
+    };
 
     const orderInfo = {
+        user_id: user_id,
         ticket_id: ticketId,
         userInfo: userInfo,
         tickets: tickets,
@@ -114,11 +113,9 @@ module.exports.success = async (req, res) => {
         }).select("title thumbnail");
 
         item.movieInfo = movieInfo;
-
-        // console.log(movieInfo);
     };
 
-    // console.log(order);
+    console.log(order);
 
     res.render("client/pages/checkout/success.pug", {
         pageTitle: "Đặt hàng thành công",

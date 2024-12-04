@@ -2,13 +2,10 @@ const Ticket = require("../../models/ticket.model");
 
 // Đặt vé không cần đăng nhập
 module.exports.ticketId = async (req, res, next) => {
-    // console.log(req.cookies.ticketId);
-
     if (!req.cookies.ticketId) {
         // Tạo vé (Chưa có)
         const ticket = new Ticket();
         await ticket.save();
-        // console.log(ticket);
 
         const expiresCookies = 30 * 24 * 60 * 60 * 1000; //30 * 24 * 60 * 60 * 1000
         res.cookie("ticketId", ticket.id, {

@@ -4,33 +4,39 @@
             .col-sm-4.col-md-4.col-lg-4.col-xl-4
                 .footer__item
                     .footer__item-img
-                        img(src="/client/images/header-logo.webp" alt="")
+                        img(src="/client/images/header-logo.webp" alt="Logo")
                     .footer__item-title BE HAPPY, BE A STAR
                     .footer__item-btn
                         button ĐẶT VÉ
                         button.water ĐẶT BẮP NƯỚC
                     .footer__item-social
-                        a(href="#") 
+                        a(href="https://www.facebook.com/cinestarcinemasvietnam" target="blank") 
                             i.fa-brands.fa-facebook
-                        a(href="#") 
+                        a(href="https://www.youtube.com/@CinestarCinemasVietnam" target="blank") 
                             i.fa-brands.fa-youtube
-                        a(href="#") 
+                        a(href="https://www.tiktok.com/@cinestarvietnam" target="blank") 
                             i.fa-brands.fa-tiktok
-                        a(href="#") 
+                        a(href="https://www.instagram.com/cinestarcinema_vietnam/" target="blank") 
                             i.fa-brands.fa-instagram
                     .footer__item-language
                         .footer__item-language-name.pe-3 Ngôn ngữ:
                         .footer__item-icon.pe-1
-                            img(src="/client/images/co vn.png" alt="")
+                            img(src="/client/images/co vn.png" alt="Cờ Việt Nam")
                         | Việt Nam
             .col-sm-2.col-md-2.col-lg-2.col-xl-2
                 .footer__item
                     .footer__item-li
                         .footer__item-ac-title TÀI KHOẢN
                         .footer__item-ac-li
-                            a(href="/user/login") Đăng nhập
+                            - if(user)
+                                a(href="/") Đăng nhập
+                            - else
+                                a(href="/user/login") Đăng nhập
                         .footer__item-ac-li
-                            a(href="/user/register") Đăng ký
+                            - if(user)
+                                a(href="/") Đăng ký
+                            - else
+                                a(href="/user/register") Đăng ký
                         .footer__item-ac-li
                             a(href="") Membership
                     .footer__item-li

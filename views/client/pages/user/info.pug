@@ -1,0 +1,63 @@
+extends ../../layouts/default.pug 
+
+block main
+    div.body
+        div#info
+            div.container.px-lg-5
+                div.row
+                    div.col-3
+                        div.info-sidebar
+                            div.info-sidebar-block
+                                div.about-user
+                                    div.ava
+                                        i.fa-regular.fa-circle-user
+                                    div.info #{user.fullName}
+                            div.info-sidebar-block
+                                div.info-menu
+                                    div.info-menu-item.active
+                                        a.active(href="/user/info")
+                                            i.fa-regular.fa-circle-user
+                                            span Thông tin khách hàng
+                                    div.info-menu-item
+                                        a(href="/user/history")
+                                            i.fa-solid.fa-clock-rotate-left
+                                            span Lịch sử đặt vé
+                            span.tag Cinestar Movie
+                    div.col-9
+                        h2.info-heading THÔNG TIN KHÁCH HÀNG
+                        div.info-profile
+                            div.info-profile-block
+                                div.info-profile-title Thông tin cá nhân
+                                form(
+                                    action=`/user/info/edit/${user.id}?_method=PATCH`
+                                    method="POST"
+                                )
+                                    div.row
+                                        div.form-group.col-6
+                                            label(for="name") Họ và tên
+                                                span(style="color:red; margin-left:2px") * 
+                                            input#name.form-control(
+                                                type="text"
+                                                name="fullName"
+                                                value=user.fullName
+                                                required
+                                            )
+                                        div.form-group.col-6
+                                            label(for="phone") Điện thoại
+                                                span(style="color:red; margin-left:2px") * 
+                                            input#phone.form-control(
+                                                type="text"
+                                                name="phone"
+                                                value=user.phone
+                                                required
+                                            )
+                                        div.form-group.col-6
+                                            label(for="mail") Email
+                                                span(style="color:red; margin-left:2px") * 
+                                            input#mail.form-control(
+                                                type="email"
+                                                name="email"
+                                                value=user.email
+                                                required
+                                            )
+                                    button(type="submit") Lưu thông tin

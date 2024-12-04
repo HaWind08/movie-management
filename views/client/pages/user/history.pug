@@ -1,0 +1,56 @@
+extends ../../layouts/default.pug
+
+block main 
+    .body
+        #info
+            .container.px-lg-5
+                .row
+                    .col-3
+                        .info-sidebar
+                            .info-sidebar-block
+                                .about-user
+                                    .ava
+                                        i.fa-regular.fa-circle-user
+                                    .info #{user.fullName}
+                            .info-sidebar-block
+                                .info-menu
+                                    .info-menu-item
+                                        a(href="/user/info")
+                                            i.fa-regular.fa-circle-user
+                                            span Thông tin khách hàng
+                                    .info-menu-item.active
+                                        a.active(href="/user/history")
+                                            i.fa-solid.fa-clock-rotate-left
+                                            span Lịch sử mua hàng
+                            span.tag Cinestar Movie
+                    .col-9.history
+                        h2.info-heading LỊCH SỬ MUA HÀNG
+                        table(
+                            class="table"
+                            style=` font-size: 16px; 
+                                    font-family: sans-serif; 
+                                    --bs-table-bg: #173365; 
+                                    --bs-table-color: #80817E;`
+                        )
+                            if(orderHitory.length > 0)
+                                thead 
+                                    tr 
+                                        th Mã vé
+                                        th Rạp
+                                        th Tên phim
+                                        th Thời gian
+                                        th Hoạt động
+                                        th Tổng tiền
+                                tbody
+                                        each item, index in orderHitory
+                                            tr
+                                                td(style="padding: 10px") #{index + 1}
+                                                td(style="padding: 10px") #{item.theater}
+                                                td(style="padding: 10px") 
+                                                    each ticket in item.tickets
+                                                        p #{ticket.movieInfo.title}
+                                                td(style="padding: 10px") #{item.time}
+                                                td(style="padding: 10px") Đặt thành công
+                                                td(style="padding: 10px") #{item.totalPrice} VNĐ
+                            else 
+                                p.history-null Không có dữ liệu!

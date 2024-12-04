@@ -56,7 +56,6 @@ module.exports.addPost = async (req, res) => {
             })
         ).then(results => results.filter(Boolean));
 
-        // Cập nhật bắp nước
         if (objectPopcornModel.length > 0) {
             await Ticket.updateOne(
                 { _id: ticketId, "tickets.movie_id": movieId },
@@ -103,7 +102,6 @@ module.exports.addPost = async (req, res) => {
         };
 
         await Ticket.updateOne({ _id: ticketId }, {
-            // data save
             $push: { tickets: objectTicketsModel },
         });
 
@@ -130,10 +128,15 @@ module.exports.addPost = async (req, res) => {
         };
 
         // seats
-        await Ticket.updateOne(
-            { _id: ticketId },
-            { $push: { seats: { $each: seats } } }
-        );
+        if (seats) {
+            // Nếu seats không phải là mảng, biến nó thành mảng
+            const seatsArray = Array.isArray(seats) ? seats : [seats];
+        
+            await Ticket.updateOne(
+                { _id: ticketId },
+                { $push: { seats: { $each: seatsArray } } }
+            );
+        }
 
         // ticket info
         ticket.theater = theater;
@@ -157,9 +160,7 @@ module.exports.addPost = async (req, res) => {
             }
         );
     };
-    // console.log(ticket);
-    // console.log(ticket.theater);
-    // req.flash("success", "Bạn đã đặt vé, vui lòng thanh toán!");
+
     res.redirect("/checkout");
 };
 

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const ticketSchema = new mongoose.Schema(
     {
-        user_id: String,
+        user_id: String, //khi đăng nhập
         tickets: [
             {
                 movie_id: String,

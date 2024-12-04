@@ -80,10 +80,7 @@ block main
                                 | Ghế thường
                             .content__right-detail
                                 p Số ghế
-                                if ticketDetail.seats.length > 1
-                                    | #{ticketDetail.seats.join(", ")}
-                                else 
-                                    | #{ticketDetail.seats[0]}
+                                | #{ticketDetail.seats.join(" ")}
                         .content__attach 
                             p Bắp nước
                             if ticketDetail.popcorns.length > 0
@@ -91,7 +88,7 @@ block main
                                     each popcorn in ticketDetail.popcorns
                                         li #{popcorn.popcorn_quantity} #{popcorn.popcorn_name}
                             else
-                                p Không có bắp nước
+                                p(style="color: #fff") Không có bắp nước
                         .content__right-line
                         .content__pay.d-flex.justify-content-between
                             .content__pay-lable SỐ TIỀN CẦN THANH TOÁN

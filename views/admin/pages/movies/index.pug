@@ -1,5 +1,6 @@
 extends ../../layouts/default.pug
 include ../../mixins/moment.pug
+include ../../mixins/pagination.pug
 
 block main
 
@@ -50,6 +51,7 @@ block main
                                         src=item.thumbnail, 
                                         alt=item.title,
                                         width="60px",
+                                        height="80px"
                                     )
                                 td #{item.title}
                                 td #{item.duration}
@@ -102,3 +104,6 @@ block main
                                         button-delete
                                         data-id=item.id
                                     ) Xóa
+
+        //- pagination
+        +pagination(pagination)

@@ -2,32 +2,44 @@ const Movie = require("../../models/movie.model");
 const Account = require("../../models/accounts.model");
 const systemConfig = require("../../config/system");
 
+const paginationHelper = require("../../helpers/pagination");
+
 // [GET] /admin/movies
 module.exports.index = async (req, res) => {
     let find = {
         deleted: false
     };
 
-    // Tìm tất cả phim để in ra giao diện
-    const movies = await Movie.find(find);
+    // Pagination
+    const countMovies = await Movie.countDocuments(find);
+    let objectPagination = paginationHelper(
+        {
+            currentPage: 1,
+            limitItems: 4
+        },
+        req.query,
+        countMovies
+    );
+    // End pagination
+
+    const movies = await Movie.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
 
     // Hiển thị lịch sử thay đổi sản phẩm
     for (const movie of movies) {
-        // lấy ra thông tin người tạo
         const user = await Account.findOne({
             _id: movie.createdBy.account_id
         });
 
         if(user) {
-            movie.accountFullName = user.fullName; // thêm key accountFullName vào movies
+            movie.accountFullName = user.fullName;
         };
     }
 
     res.render("admin/pages/movies/index.pug", {
         pageTitle: "Danh sách phim",
-        // --> view (index.pug - movies)
         currentPage: "movies",
-        movies: movies
+        movies: movies,
+        pagination: objectPagination
     });
 };
 

@@ -11,15 +11,7 @@ module.exports.ticketId = async (req, res, next) => {
         res.cookie("ticketId", ticket.id, {
             expires: new Date(Date.now() + expiresCookies)
         });
-    } else {
-        // Lấy ra thôi (Nếu có)
-        // const ticket = await Ticket.findOne({
-        //     _id: req.cookies.ticketId
-        // });
-
-        // ticket.totalQuantity = cart.products.reduce((sum, item) => sum + item.quantity, 0);
-        // res.locals.miniCart = ticket;
-    };
+    }; 
 
     next();
 };

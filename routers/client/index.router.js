@@ -1,6 +1,7 @@
 // File tổng chứa các router
 const homeRouter = require("./home.router");
 const movieRouter = require("./movie.router");
+const movieUpcomingRouter = require("./movie-upcoming.router");
 const userRouter = require("./user.router");
 const searchRouter = require("./search.router");
 const ticketRouter = require("./ticket.router");
@@ -18,6 +19,8 @@ module.exports = (app) => {
     app.use("/", homeRouter);
 
     app.use("/movies", movieRouter);
+
+    app.use("/movies-upcoming", movieUpcomingRouter);
 
     app.use("/user", userRouter);
 

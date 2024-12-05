@@ -54,16 +54,16 @@ block main
                 .content__title
                     .content__title-showing PHIM SẮP CHIẾU
                 .row.g-5
-                    each item in moviesFeatured
+                    each item in moviesUpcoming
                         .col-6.col-sm-6.col-md-4.col-lg-3.col-xl-3.content__contain
                             .content__item.content__over
-                                a.content__item-link(href=`/movies/detail/${item.slug}`)
+                                a.content__item-link(href=`/movies-upcoming/detail/${item.slug}`)
                                     .content__item-img
                                         .content__item-overlay
                                         img(src=item.thumbnail alt=item.title)
                                         div.tag-featured Nổi bật
                                     .content__item-infor
-                                        .content__item-date Khởi chiếu: 13/12/2024
+                                        .content__item-date #{item.release_date}
                                         .content__item-name #{item.title}
                                         .content__item-action
                                             .content__item-action-span
@@ -72,4 +72,4 @@ block main
                                             .content__item-action-button TÌM HIỂU THÊM
                 .content__see-more
                     .content__see-btn 
-                        a(href="/movies") XEM THÊM
+                        a(href="/movies-upcoming") XEM THÊM

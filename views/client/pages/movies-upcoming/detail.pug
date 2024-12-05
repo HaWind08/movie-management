@@ -1,0 +1,38 @@
+extends ../../layouts/default.pug
+
+block main
+    #body.body
+        .container.px-lg-5
+            .row.mt-5
+                .col-5.col-md-5.col-lg-5.col-xl-5
+                    .info__img
+                        img.img-fluid(src=movies.thumbnail alt=movies.title)
+                .info.col-7.col-md-7.col-lg-7.col-xl-7
+                    .info__name #{movies.title}
+                    .info__item
+                        img(src="/client/images/icon-tag.svg" alt="Icon tag")
+                        .info__item-category #{movies.movie_category}
+                    .info__item
+                        img(src="/client/images/icon-clock.svg" alt="Icon clock")
+                        .info__item-category #{movies.duration}
+                    .info__item
+                        i.fa-solid.fa-earth-asia
+                        .info__item-category #{movies.country}
+                    .info__item
+                        img(src="/client/images/subtitle.svg" alt="subtitle")
+                        .info__item-category Phụ đề
+                    .info__sub-title.mt-5.d-none.d-sm-none.d-md-block.d-lg-block.d-xl-block
+                        .info__decr-lable Mô tả
+                        .info__decr-inf.my-3
+                            .info__decr-actor !{movies.description}
+                    .info__sub-title.mt-5.d-none.d-sm-none.d-md-block.d-lg-block.d-xl-block
+                        .info__decr-lable NỘI DUNG PHIM
+                        .info__decr-text.my-3 !{movies.movie_content}
+                    .detail__ct.my-5
+                        a.d-flex.align-items-center(href="#")
+                            img(src="/client/images/icon-play-vid.svg" alt="Icon play")
+                            .detail__ct-watch Xem Trailer
+            .row.text-center 
+                .no-showtimes
+                    i.fa-solid.fa-video-slash 
+                    h1 HIỆN CHƯA CÓ LỊCH CHIẾU

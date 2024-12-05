@@ -14,7 +14,6 @@ block main
                                 .choose-corn__item-info.px-4
                                     .choose-corn__item-name #{item.title}
                                     .choose-corn__item-desc #{item.description}
-                                    .choose-corn__item-price #{item.price},000VND
-                                    .choose-corn__item-count
-                                        input(type="number", min="0", max="10", placeholder="0")
-                        
+                                    .choose-corn__item-price #{item.price} VND
+                                    .choose-corn__item-count Còn lại: #{item.stock}
+                                        

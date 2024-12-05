@@ -4,7 +4,7 @@ include ../../mixins/pagination.pug
 
 block main
 
-    h1.page-title Danh sách bắp nước
+    h1.page-title Phim sắp chiếu
 
     .card-mb-3 
         .card-header.table-title Danh sách
@@ -14,7 +14,7 @@ block main
                         
                     .col-4.text-right
                         a(
-                            href=`${prefixAdmin}/popcorns/create`
+                            href=`${prefixAdmin}/movies-upcoming/create`
                             class="btn btn-outline-success"
                         ) + Thêm mới
 
@@ -29,15 +29,14 @@ block main
                             th STT
                             th Hình ảnh 
                             th Tiêu đề
-                            th Mô tả
-                            th Số lượng
+                            th Thời lượng phim
                             th Vị trí
                             th Trạng thái
                             th Người tạo
                             th Người cập nhật
                             th Hoạt động
-                    tbody 
-                        each item, index in popcorns 
+                    tbody
+                        each item, index in movies 
                             tr 
                                 td 
                                     input(
@@ -52,17 +51,10 @@ block main
                                         src=item.thumbnail, 
                                         alt=item.title,
                                         width="60px",
+                                        height="80px"
                                     )
                                 td #{item.title}
-                                td #{item.description}
-                                td 
-                                    input(
-                                        type="number"
-                                        value=item.stock 
-                                        style="width: 60px"
-                                        min="1"
-                                        name="stock"
-                                    )
+                                td #{item.duration}
                                 td 
                                     input(
                                         type="number"
@@ -98,7 +90,7 @@ block main
                                     //-     p #{updatedBy.accountFullName}
                                     //-     p 
                                     //-         +formatDateTime(updatedBy.updatedAt)
-                                td.white-space
+                                td
                                     a(
                                         href=`${prefixAdmin}/products/detail/${item.id}`
                                         class="btn btn-secondary btn-sm"

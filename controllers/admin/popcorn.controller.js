@@ -2,13 +2,28 @@ const Popcorn = require("../../models/popcorn.model");
 const Account = require("../../models/accounts.model");
 const systemConfig = require("../../config/system");
 
+const paginationHelper = require("../../helpers/pagination");
+const pagination = require("../../helpers/pagination");
+
 // [GET] /admin/popcorn
 module.exports.index = async (req, res) => {
     let find = {
         deleted: false
-    }
+    };
 
-    const popcorns = await Popcorn.find(find);
+    // pagination
+    const countPopcorns = await Popcorn.countDocuments(find);
+    let objectPagination = paginationHelper(
+        {
+            currentPage: 1,
+            limitItems: 5
+        },
+        req.query,
+        countPopcorns
+    );
+    // end pagination
+
+    const popcorns = await Popcorn.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
 
     for(const popcorn of popcorns) {
         const user = await Account.findOne({
@@ -23,7 +38,8 @@ module.exports.index = async (req, res) => {
     res.render("admin/pages/popcorns/index.pug", {
         pageTitle: "Danh sách bắp nước",
         currentPage: "popcorns",
-        popcorns: popcorns
+        popcorns: popcorns,
+        pagination: objectPagination
     });
 };
 
@@ -37,7 +53,6 @@ module.exports.create = async (req, res) => {
 
 // [POST] /admin/popcorn/create
 module.exports.createPost = async (req, res) => {
-    console.log(req.body);
     req.body.price = parseInt(req.body.price);
     req.body.stock = parseInt(req.body.stock);
 

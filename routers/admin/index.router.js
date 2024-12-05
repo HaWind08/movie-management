@@ -5,6 +5,7 @@ const authMiddleware = require("../../middlewares/admin/auth.middleware");
 const dashboardRouter = require("./dashboard.router");
 const authRouter = require("./auth.router");
 const movieRouter = require("./movie.router");
+const movieUpcomingRouter = require("./movie-upcoming.router");
 const popcornRouter = require("./popcorn.router");
 
 module.exports = (app) => {
@@ -15,6 +16,8 @@ module.exports = (app) => {
     app.use(PATH_ADMIN + "/auth", authRouter); //no private
 
     app.use(PATH_ADMIN + "/movies", authMiddleware.requireAuth, movieRouter);
+
+    app.use(PATH_ADMIN + "/movies-upcoming", authMiddleware.requireAuth, movieUpcomingRouter);
 
     app.use(PATH_ADMIN + "/popcorns", authMiddleware.requireAuth, popcornRouter);
 

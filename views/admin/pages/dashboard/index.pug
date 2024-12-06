@@ -3,3 +3,57 @@ extends ../../layouts/default.pug
 block main
 
     h1.page-title Trang tổng quan
+
+    .row.mt-4 
+        .col-12 
+            .card.mb-4
+                .card-header Thông tin tài khoản
+                .card-body 
+                    if(user.avatar)
+                        img(
+                            src=user.avatar
+                            style="height: 100px; margin-bottom: 15px"
+                        )
+                    if(user.fullName)
+                        p Họ tên: <b>#{user.fullName}</b>
+                    if(user.email)
+                        p Email: <b>#{user.email}</b>
+                    if(user.phone)
+                        p Số điện thoại: <b>#{user.phone}</b>
+
+        .col-6
+            .card.mb-4(style="background: #FFE2E5") 
+                .card-header(style="background: rgb(250, 90, 125)") 
+                    i.fa-solid.fa-film.mr-3(style="color: #fff") 
+                    span Danh sách phim đang chiếu
+                .card-body
+                    p Số lượng: <b>#{statistic.movie.total}</b>
+                    p Hoạt động: <b>#{statistic.movie.active}</b>
+                    p Dừng hoạt động: <b>#{statistic.movie.inactive}</b>
+        .col-6 
+            .card.mb-4(style="background: #FFF4DE") 
+                .card-header(style="background: rgb(255, 148, 122)")  
+                    i.fa-solid.fa-compact-disc.mr-3(style="color: #fff") 
+                    span Danh sách phim sắp chiếu
+                .card-body
+                    p Số lượng: <b>#{statistic.movieUpcoming.total}</b>
+                    p Hoạt động: <b>#{statistic.movieUpcoming.active}</b>
+                    p Dừng hoạt động: <b>#{statistic.movieUpcoming.inactive}</b>
+        .col-6 
+            .card.mb-4(style="background: #DCFCE7") 
+                .card-header(style="background: rgb(60, 216, 86)")  
+                    i.fa-solid.fa-mug-hot.mr-3(style="color: #fff") 
+                    span Danh sách bắp nước
+                .card-body
+                    p Số lượng: <b>#{statistic.popcorn.total}</b>
+                    p Hoạt động: <b>#{statistic.popcorn.active}</b>
+                    p Dừng hoạt động: <b>#{statistic.popcorn.inactive}</b>
+        .col-6 
+            .card.mb-4(style="background: #F0E5FC") 
+                .card-header(style="background: rgb(191, 131, 255)") 
+                    i.fa-solid.fa-circle-user.mr-3(style="color: #fff") 
+                    span Tài khoản client
+                .card-body
+                    p Số lượng: <b>#{statistic.user.total}</b>
+                    p Hoạt động: <b>#{statistic.user.active}</b>
+                    p Dừng hoạt động: <b>#{statistic.user.inactive}</b>

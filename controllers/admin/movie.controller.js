@@ -98,7 +98,6 @@ module.exports.createPost = async (req, res) => {
     req.body.ticket_prices.adult = parseInt(req.body.ticket_prices.adult);
     req.body.ticket_prices.child = parseInt(req.body.ticket_prices.child);
 
-    // Kiểm tra vị trí được điền hay không
     if (req.body.position == "") {
         const countMovies = await Movie.countDocuments();
         req.body.position = countMovies + 1;
@@ -107,14 +106,80 @@ module.exports.createPost = async (req, res) => {
     }
 
     // Kiểm tra lịch sử thay đổi sản phẩm
-    req.body.createdBy = { //gắn giá trị cho trường createBy trong bảng
+    req.body.createdBy = { //gắn giá trị cho trường createBy
         account_id: res.locals.user.id
     }
 
-    // Lưu vào DB
+    if (req.file) {
+        req.body.thumbnail = `/uploads/${req.file.filename}`;
+    }
+
     const movie = new Movie(req.body);
     await movie.save();
 
-    req.flash("success", "Tạo sản phẩm thành công!");
+    req.flash("success", "Tạo mới phim thành công!");
     res.redirect(`${systemConfig.prefixAdmin}/movies`);
+};
+
+// [GET] /admin/movies/edit/:id
+module.exports.edit = async (req, res) => {
+    try {
+        const find = {
+            deleted: false,
+            _id: req.params.id
+        };
+
+        const movie = await Movie.findOne(find);
+
+        res.render("admin/pages/movies/edit.pug", {
+            pageTitle: "Chỉnh sửa phim",
+            currentPage: "movies",
+            movie: movie
+        });
+    } catch (error) {
+        req.flash("error", "Không tồn tại sản phẩm này!");
+        res.redirect(`${systemConfig.prefixAdmin}/movies`);
+    };
+};
+
+// [PATCH] /admin/movies/edit/:id
+module.exports.editPatch = async (req, res) => {
+    const id = req.params.id;
+    req.body.ticket_prices.adult = parseInt(req.body.ticket_prices.adult);
+    req.body.ticket_prices.child = parseInt(req.body.ticket_prices.child);
+    req.body.position = parseInt(req.body.position);
+
+    if (req.file) {
+        req.body.thumbnail = `/uploads/${req.file.filename}`;
+    };
+
+    try {
+        await Movie.updateOne({ _id: id }, req.body);
+        req.flash("success", "Cập nhật thành công!");
+    } catch (error) {
+        req.flash("error", "Cập nhật thật bại!");
+    };
+
+    res.redirect(`back`);
+};
+
+// [GET] /admin/movies/detail/:id
+module.exports.detail = async (req, res) => {
+    try {
+        const find = {
+            deleted: false,
+            _id: req.params.id
+        };
+
+        const movie = await Movie.findOne(find);
+
+        res.render("admin/pages/movies/detail.pug", {
+            pageTitle: "Chi tiết phim",
+            currentPage: "movies",
+            movie: movie
+        });
+    } catch (error) {
+        req.flash("error", "Không tồn tại sản phẩm này!");
+        res.redirect(`${systemConfig.prefixAdmin}/movies`);
+    };
 };

@@ -1,0 +1,37 @@
+extends ../../layouts/default.pug 
+
+block main 
+    #body.body
+        .container.px-lg-5
+            .row.mt-3
+                .col-5.col-md-5.col-lg-5.col-xl-5
+                    if (movie.thumbnail)
+                        .info__img
+                            img.img-fluid(src=movie.thumbnail alt=movie.title)
+                .info.col-7.col-md-7.col-lg-7.col-xl-7
+                    if (movie.title)
+                        .info__name #{movie.title}
+                    .info__item
+                        i.fa-solid.fa-tags
+                        if (movie.movie_category)
+                            .info__item-category #{movie.movie_category}
+                    .info__item
+                        i.fa-regular.fa-clock
+                        if (movie.duration)
+                            .info__item-category #{movie.duration}
+                    .info__item
+                        i.fa-solid.fa-earth-asia
+                        if (movie.country)
+                            .info__item-category #{movie.country}
+                    .info__item
+                        i.fa-regular.fa-closed-captioning
+                        .info__item-category Phụ đề
+                    .info__sub-title.mt-4.d-none.d-sm-none.d-md-block.d-lg-block.d-xl-block
+                        .info__decr-lable MÔ TẢ
+                        .info__decr-inf.my-3
+                            if (movie.description)
+                                .info__decr-actor !{movie.description}
+                    .info__sub-title.mt-4.d-none.d-sm-none.d-md-block.d-lg-block.d-xl-block
+                        .info__decr-lable NỘI DUNG PHIM
+                        if (movie.movie_content)
+                            .info__decr-text.my-3 !{movie.movie_content}

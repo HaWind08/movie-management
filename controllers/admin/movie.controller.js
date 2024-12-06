@@ -21,7 +21,7 @@ module.exports.index = async (req, res) => {
 
     // search
     const objectSearch = searchHelper(req.query);
-    if(objectSearch.regex) {
+    if (objectSearch.regex) {
         find.title = objectSearch.regex;
     };
 
@@ -58,6 +58,17 @@ module.exports.index = async (req, res) => {
         keyword: objectSearch.keyword,
         pagination: objectPagination
     });
+};
+
+// [PATCH] /admin/movies/changes-status/:status/:id
+module.exports.changeStatus = async (req, res) => {
+    const status = req.params.status;
+    const id = req.params.id;
+
+    await Movie.updateOne({ _id: id }, {
+        status: status
+    });
+    res.redirect("back");
 };
 
 // [GET] /admin/movies/create

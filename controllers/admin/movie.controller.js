@@ -68,6 +68,20 @@ module.exports.changeStatus = async (req, res) => {
     await Movie.updateOne({ _id: id }, {
         status: status
     });
+
+    req.flash("success", "Thay đổi trạng thái thành công!");
+    res.redirect("back");
+};
+
+// [DELETE] /admin/movies/delete/:id
+module.exports.deleteMovie = async (req, res) => {
+    const id = req.params.id;
+
+    await Movie.updateOne({ _id: id }, {
+        deleted: true
+    });
+
+    req.flash("success", "Xóa phim thành công!");
     res.redirect("back");
 };
 

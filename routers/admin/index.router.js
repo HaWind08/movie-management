@@ -7,6 +7,7 @@ const authRouter = require("./auth.router");
 const movieRouter = require("./movie.router");
 const movieUpcomingRouter = require("./movie-upcoming.router");
 const popcornRouter = require("./popcorn.router");
+const accountRouter = require("./account.router");
 
 module.exports = (app) => {
     const PATH_ADMIN = systemConfig.prefixAdmin;
@@ -20,5 +21,7 @@ module.exports = (app) => {
     app.use(PATH_ADMIN + "/movies-upcoming", authMiddleware.requireAuth, movieUpcomingRouter);
 
     app.use(PATH_ADMIN + "/popcorns", authMiddleware.requireAuth, popcornRouter);
+
+    app.use(PATH_ADMIN + "/accounts", authMiddleware.requireAuth, accountRouter);
 
 }

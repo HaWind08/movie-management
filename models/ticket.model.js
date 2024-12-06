@@ -30,14 +30,13 @@ const ticketSchema = new mongoose.Schema(
         expireAt: {
             type: Date,
             default: () => new Date(Date.now() + 86400 * 1000), // 1 ngày
-            expires: 0,
         }
     },
     {
         timestamps: true
     }
 );
-
+ticketSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 const Ticket = mongoose.model('Ticket', ticketSchema, "tickets"); // tickets: connection in database
 
 module.exports = Ticket;

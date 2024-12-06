@@ -122,3 +122,25 @@
 .footer__item-ac-li a:hover {
     color: var(--button-color-1);
 }
+
+@media (max-width: 1199.98px) {
+    .footer__sm {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .footer__top {
+        display: none;
+    }
+
+    .footer__sm {
+        display: block;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .footer__top {
+        display: none;
+    }
+}

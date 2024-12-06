@@ -2,12 +2,27 @@ const Movie = require("../../models/movie.model");
 const Account = require("../../models/accounts.model");
 const systemConfig = require("../../config/system");
 
+const filterStatusHelper = require("../../helpers/filterStatus");
+const searchHelper = require("../../helpers/search");
 const paginationHelper = require("../../helpers/pagination");
 
 // [GET] /admin/movies
 module.exports.index = async (req, res) => {
+    // filter
+    const filterStatus = filterStatusHelper(req.query);
+
     let find = {
         deleted: false
+    };
+
+    if (req.query.status) {
+        find.status = req.query.status;
+    };
+
+    // search
+    const objectSearch = searchHelper(req.query);
+    if(objectSearch.regex) {
+        find.title = objectSearch.regex;
     };
 
     // Pagination
@@ -30,7 +45,7 @@ module.exports.index = async (req, res) => {
             _id: movie.createdBy.account_id
         });
 
-        if(user) {
+        if (user) {
             movie.accountFullName = user.fullName;
         };
     }
@@ -39,6 +54,8 @@ module.exports.index = async (req, res) => {
         pageTitle: "Danh sách phim",
         currentPage: "movies",
         movies: movies,
+        filterStatus: filterStatus,
+        keyword: objectSearch.keyword,
         pagination: objectPagination
     });
 };
@@ -57,7 +74,7 @@ module.exports.createPost = async (req, res) => {
     req.body.ticket_prices.child = parseInt(req.body.ticket_prices.child);
 
     // Kiểm tra vị trí được điền hay không
-    if(req.body.position == ""){
+    if (req.body.position == "") {
         const countMovies = await Movie.countDocuments();
         req.body.position = countMovies + 1;
     } else {

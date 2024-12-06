@@ -105,4 +105,15 @@ a:hover {
     background-color: #0FB89D;
 }
 
+.badge-dangerCreate {
+    color: #E6FFFA;
+    background-color: #FA896B;
+    padding: 5px 6px;
+}
+
+.badge-dangerCreate:hover {
+    color: #E6FFFA;
+    background-color: #F97352;
+}
+
 /* End table */

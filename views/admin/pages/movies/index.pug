@@ -1,39 +1,21 @@
 extends ../../layouts/default.pug
 include ../../mixins/moment.pug
 include ../../mixins/pagination.pug
+include ../../mixins/filter-status.pug
+include ../../mixins/search.pug
 
 block main
 
     h1.page-title Phim đang chiếu
 
-    //- .card-mb-3 
-    //-         .card-header Bộ lọc và tìm kiếm
-    //-         .card-body 
-    //-             .row
-    //-                 .col-6
-    //-                     button(
-    //-                         class=`btn btn-sm ml-1 btn-outline-info active`
-    //-                     ) Tất cả
-    //-                     button(
-    //-                         class=`btn btn-sm ml-1 btn-outline-info`
-    //-                     ) Hoạt động
-    //-                     button(
-    //-                         class=`btn btn-sm ml-1 btn-outline-info`
-    //-                     ) Dừng hoạt động
-    //-                 .col-6
-    //-                     form(id="form-search")
-    //-                         .input-group    
-    //-                             input(
-    //-                                 type="text",
-    //-                                 placeholder="Nhập từ khóa"
-    //-                                 name="keyword",
-    //-                                 class="form-control",
-    //-                             ) 
-    //-                             .input-group-append 
-    //-                                 button(
-    //-                                     class="btn btn-info",
-    //-                                     type="Submit"
-    //-                             ) Tìm
+    .card-mb-3 
+            .card-header Bộ lọc và tìm kiếm
+            .card-body 
+                .row
+                    .col-6
+                        +filter-status(filterStatus)
+                    .col-6
+                        +search(keyword)
 
     .card-mb-3 
         .card-header.table-title Danh sách
@@ -53,8 +35,8 @@ block main
                 )
                     thead 
                         tr 
-                            th 
-                                input(type="checkbox" name="checkall")
+                            //- th 
+                            //-     input(type="checkbox" name="checkall")
                             th STT
                             th Hình ảnh 
                             th Tiêu đề
@@ -67,12 +49,12 @@ block main
                     tbody 
                         each item, index in movies 
                             tr 
-                                td 
-                                    input(
-                                        type="checkbox"
-                                        name="id"
-                                        value=item.id
-                                    )
+                                //- td 
+                                //-     input(
+                                //-         type="checkbox"
+                                //-         name="id"
+                                //-         value=item.id
+                                //-     )
                                 //- td #{pagination.limitItems*(pagination.currentPage - 1) + (index + 1)}
                                 td #{index + 1}
                                 td
@@ -91,6 +73,7 @@ block main
                                         style="width: 60px"
                                         min="1"
                                         name="position"
+                                        readonly
                                     )
                                 td
                                     if(item.status == "active")
@@ -121,11 +104,11 @@ block main
                                     //-         +formatDateTime(updatedBy.updatedAt)
                                 td
                                     a(
-                                        href=`${prefixAdmin}/products/detail/${item.id}`
+                                        href=`${prefixAdmin}/movie/detail/${item.id}`
                                         class="btn btn-secondary btn-sm"
                                     ) Chi tiết
                                     a(
-                                        href=`${prefixAdmin}/products/edit/${item.id}`
+                                        href=`${prefixAdmin}/movie/edit/${item.id}`
                                         class="btn btn-warning btn-sm ml-1"
                                     ) Sửa
                                     button(
